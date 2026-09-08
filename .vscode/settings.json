@@ -1,0 +1,33 @@
+{
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // GitHub Copilot agent (agent mode) tool/permission rules for this repo.
+  // Only affects the "Default Approvals" permission level — it does not apply
+  // when a session is switched to "Bypass Approvals" or "Autopilot".
+  "chat.tools.terminal.autoApprove": {
+    // Safe, idempotent project commands (see AGENTS.md) — auto-approved.
+    "npm run dev": true,
+    "npm run build": true,
+    "npm run preview": true,
+    "npm run lint": true,
+    "npm run lint:fix": true,
+    "npm run format": true,
+    "npx astro sync": true,
+    "npx astro check": true,
+    "npx supabase start": true,
+    "npx supabase stop": true,
+    "/^git (status|diff|log|show)\\b.*/": true,
+
+    // Destructive or externally-visible actions — always require explicit approval.
+    "npx wrangler deploy": false,
+    "/^npx wrangler secret\\b.*/": false,
+    "/^npx supabase (db|migration)\\b.*/": false,
+    "/^git (push|reset --hard|clean -fd)\\b.*/": false,
+    "rm": false,
+    "del": false,
+    "Remove-Item": false
+  }
+}
