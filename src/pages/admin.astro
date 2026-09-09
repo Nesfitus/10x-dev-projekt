@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const { user } = Astro.locals;
+---
+
+<Layout title="Admin">
+  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
+    <div class="rounded-2xl border border-white/10 bg-white/10 p-8 text-center text-white backdrop-blur-xl">
+      <h1 class="mb-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-3xl font-bold text-transparent">
+        Admin area — placeholder, replaced in S-01
+      </h1>
+      <p class="text-blue-100/80">
+        Signed in as admin: <span class="font-semibold text-white">{user?.email}</span>
+      </p>
+    </div>
+  </div>
+</Layout>

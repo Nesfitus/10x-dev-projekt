@@ -161,6 +161,14 @@ Rozszerzamy middleware o rolę, dodajemy helper do ochrony endpointów API i tym
 
 **Contract**: Struktura analogiczna do istniejącego `src/pages/dashboard.astro` (ten sam `Layout`, ten sam styl karty) — wyświetla statyczny tekst w stylu "Admin area — placeholder, replaced in S-01" oraz e-mail zalogowanego Admina z `Astro.locals.user`. Ochrona dostępu odbywa się wyłącznie przez middleware (Faza 3, punkt 1) — strona sama nie zawiera logiki guard, tak jak `dashboard.astro` nie zawiera jej dla zwykłego uwierzytelnienia.
 
+#### 5. Testowy endpoint API chroniony przez `requireRole()` (dodane podczas implementacji)
+
+**File**: `src/pages/api/admin/ping.ts` (nowy plik)
+
+**Intent**: Success Criteria 3.6 wymaga ręcznego zweryfikowania `requireRole()` na jakimś endpoincie API, ale sekcja Changes Required pierwotnie nie wymieniała żadnego takiego pliku — dopisano go podczas implementacji po zaflagowaniu niespójności użytkownikowi (zaakceptowana opcja "Dostosuj i kontynuuj"). Zostanie usunięty/zastąpiony realnym endpointem w S-01.
+
+**Contract**: `GET` handler wywołujący `requireRole(context.locals, "admin")` jako pierwszą linię; zwraca `{ ok: true }` (200) jeśli przechodzi, w przeciwnym razie odpowiedź z `requireRole()` (403).
+
 ### Success Criteria:
 
 #### Automated Verification:
@@ -292,17 +300,17 @@ Nie dotyczy — brak istniejących danych do migracji (pierwsza migracja w proje
 
 #### Manual
 
-- [x] 2.1 Konto Admina założone przez `/auth/signup`, wiersz `profiles` powstał automatycznie
-- [x] 2.2 Konto przykładowego Usera założone przez `/auth/signup`
-- [x] 2.3 Rola Admina wypromowana przez SQL lokalnie, potwierdzona zapytaniem
-- [x] 2.4 To samo powtórzone na żywym projekcie Supabase
+- [x] 2.1 Konto Admina założone przez `/auth/signup`, wiersz `profiles` powstał automatycznie — f1da4b3
+- [x] 2.2 Konto przykładowego Usera założone przez `/auth/signup` — f1da4b3
+- [x] 2.3 Rola Admina wypromowana przez SQL lokalnie, potwierdzona zapytaniem — f1da4b3
+- [x] 2.4 To samo powtórzone na żywym projekcie Supabase — f1da4b3
 
 ### Phase 3: Mechanizm strażnika (guard) i strona demo
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi: `npm run lint`
-- [ ] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint`
+- [x] 3.2 Build przechodzi: `npm run build`
 
 #### Manual
 
