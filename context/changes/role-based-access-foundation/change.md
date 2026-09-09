@@ -3,7 +3,7 @@ change_id: role-based-access-foundation
 title: "Model ról Admin/User — fundament kontroli dostępu"
 status: implementing
 created: 2026-09-08
-updated: 2026-09-08
+updated: 2026-09-09
 roadmap_id: F-01
 ---
 

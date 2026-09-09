@@ -279,23 +279,23 @@ Nie dotyczy — brak istniejących danych do migracji (pierwsza migracja w proje
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto lokalnie: `npx supabase db reset`
-- [x] 1.2 Lint przechodzi: `npm run lint`
-- [x] 1.3 Build przechodzi: `npm run build`
+- [x] 1.1 Migracja aplikuje się czysto lokalnie: `npx supabase db reset` — d389d75
+- [x] 1.2 Lint przechodzi: `npm run lint` — d389d75
+- [x] 1.3 Build przechodzi: `npm run build` — d389d75
 
 #### Manual
 
-- [x] 1.4 Tabela `profiles` widoczna w Supabase Studio z poprawnymi kolumnami i włączonym RLS
-- [x] 1.5 Testowa rejestracja automatycznie tworzy wiersz w `profiles` z rolą `user`
+- [x] 1.4 Tabela `profiles` widoczna w Supabase Studio z poprawnymi kolumnami i włączonym RLS — d389d75
+- [x] 1.5 Testowa rejestracja automatycznie tworzy wiersz w `profiles` z rolą `user` — d389d75
 
 ### Phase 2: Bootstrap kont — Admin i przykładowy User
 
 #### Manual
 
-- [ ] 2.1 Konto Admina założone przez `/auth/signup`, wiersz `profiles` powstał automatycznie
-- [ ] 2.2 Konto przykładowego Usera założone przez `/auth/signup`
-- [ ] 2.3 Rola Admina wypromowana przez SQL lokalnie, potwierdzona zapytaniem
-- [ ] 2.4 To samo powtórzone na żywym projekcie Supabase
+- [x] 2.1 Konto Admina założone przez `/auth/signup`, wiersz `profiles` powstał automatycznie
+- [x] 2.2 Konto przykładowego Usera założone przez `/auth/signup`
+- [x] 2.3 Rola Admina wypromowana przez SQL lokalnie, potwierdzona zapytaniem
+- [x] 2.4 To samo powtórzone na żywym projekcie Supabase
 
 ### Phase 3: Mechanizm strażnika (guard) i strona demo
 
