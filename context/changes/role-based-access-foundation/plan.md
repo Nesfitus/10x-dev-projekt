@@ -309,26 +309,26 @@ Nie dotyczy — brak istniejących danych do migracji (pierwsza migracja w proje
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi: `npm run lint`
-- [x] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint` — 842f654
+- [x] 3.2 Build przechodzi: `npm run build` — 842f654
 
 #### Manual
 
-- [x] 3.3 Admin widzi `/admin`
-- [x] 3.4 User przekierowany z `/admin` na `/dashboard`
-- [x] 3.5 Niezalogowany przekierowany z `/admin` na `/auth/signin`
-- [x] 3.6 Chroniony endpoint API zwraca 403 dla User, przechodzi dla Admina
+- [x] 3.3 Admin widzi `/admin` — 842f654
+- [x] 3.4 User przekierowany z `/admin` na `/dashboard` — 842f654
+- [x] 3.5 Niezalogowany przekierowany z `/admin` na `/auth/signin` — 842f654
+- [x] 3.6 Chroniony endpoint API zwraca 403 dla User, przechodzi dla Admina — 842f654
 
 ### Phase 4: Wyłączenie publicznej samorejestracji
 
 #### Automated
 
-- [ ] 4.1 Lint przechodzi: `npm run lint`
-- [ ] 4.2 Build przechodzi: `npm run build`
+- [x] 4.1 Lint przechodzi: `npm run lint`
+- [x] 4.2 Build przechodzi: `npm run build`
 
 #### Manual
 
-- [ ] 4.3 `/auth/signup` pokazuje komunikat o zamkniętej rejestracji lokalnie
-- [ ] 4.4 Bezpośredni `POST /api/auth/signup` nie tworzy użytkownika lokalnie
-- [ ] 4.5 Dashboard Supabase potwierdza wyłączoną rejestrację na żywym projekcie
-- [ ] 4.6 Strona logowania nie zawiera linku do rejestracji
+- [x] 4.3 `/auth/signup` pokazuje komunikat o zamkniętej rejestracji lokalnie
+- [x] 4.4 Bezpośredni `POST /api/auth/signup` nie tworzy użytkownika lokalnie
+- [x] 4.5 Dashboard Supabase potwierdza wyłączoną rejestrację na żywym projekcie
+- [x] 4.6 Strona logowania nie zawiera linku do rejestracji
