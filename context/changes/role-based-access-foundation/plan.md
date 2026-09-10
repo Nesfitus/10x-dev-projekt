@@ -323,12 +323,12 @@ Nie dotyczy — brak istniejących danych do migracji (pierwsza migracja w proje
 
 #### Automated
 
-- [x] 4.1 Lint przechodzi: `npm run lint`
-- [x] 4.2 Build przechodzi: `npm run build`
+- [x] 4.1 Lint przechodzi: `npm run lint` — 448d110
+- [x] 4.2 Build przechodzi: `npm run build` — 448d110
 
 #### Manual
 
-- [x] 4.3 `/auth/signup` pokazuje komunikat o zamkniętej rejestracji lokalnie
-- [x] 4.4 Bezpośredni `POST /api/auth/signup` nie tworzy użytkownika lokalnie
-- [x] 4.5 Dashboard Supabase potwierdza wyłączoną rejestrację na żywym projekcie
-- [x] 4.6 Strona logowania nie zawiera linku do rejestracji
+- [x] 4.3 `/auth/signup` pokazuje komunikat o zamkniętej rejestracji lokalnie — 448d110
+- [x] 4.4 Bezpośredni `POST /api/auth/signup` nie tworzy użytkownika lokalnie — 448d110
+- [x] 4.5 Dashboard Supabase potwierdza wyłączoną rejestrację na żywym projekcie — 448d110
+- [x] 4.6 Strona logowania nie zawiera linku do rejestracji — 448d110
