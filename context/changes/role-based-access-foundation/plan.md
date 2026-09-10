@@ -314,10 +314,10 @@ Nie dotyczy — brak istniejących danych do migracji (pierwsza migracja w proje
 
 #### Manual
 
-- [ ] 3.3 Admin widzi `/admin`
-- [ ] 3.4 User przekierowany z `/admin` na `/dashboard`
-- [ ] 3.5 Niezalogowany przekierowany z `/admin` na `/auth/signin`
-- [ ] 3.6 Chroniony endpoint API zwraca 403 dla User, przechodzi dla Admina
+- [x] 3.3 Admin widzi `/admin`
+- [x] 3.4 User przekierowany z `/admin` na `/dashboard`
+- [x] 3.5 Niezalogowany przekierowany z `/admin` na `/auth/signin`
+- [x] 3.6 Chroniony endpoint API zwraca 403 dla User, przechodzi dla Admina
 
 ### Phase 4: Wyłączenie publicznej samorejestracji
 
