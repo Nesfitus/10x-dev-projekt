@@ -351,29 +351,29 @@ Migracja z Fazy 1 jest addytywna (`ADD COLUMN ... DEFAULT false`) — nie wymaga
 
 #### Automated
 
-- [x] 4.1 Lint przechodzi: `npm run lint`
-- [x] 4.2 Build przechodzi: `npm run build`
+- [x] 4.1 Lint przechodzi: `npm run lint` — 6067667
+- [x] 4.2 Build przechodzi: `npm run build` — 6067667
 
 #### Manual
 
-- [ ] 4.3 Poprawny POST jako Admin tworzy konto Usera, logowalne od razu bez e-maila
-- [ ] 4.4 POST z istniejącym e-mailem przekierowuje z komunikatem o duplikacie
-- [ ] 4.5 POST z nieprawidłowym e-mailem/za krótkim hasłem przekierowuje z komunikatem walidacji
-- [ ] 4.6 Dezaktywacja konta `user` ustawia `disabled = true`; próba dla `admin` kończy się błędem bez zmiany
-- [ ] 4.7 Bezpośredni POST jako User na oba endpointy zwraca 403
+- [x] 4.3 Poprawny POST jako Admin tworzy konto Usera, logowalne od razu bez e-maila — 6067667
+- [x] 4.4 POST z istniejącym e-mailem przekierowuje z komunikatem o duplikacie — 6067667
+- [x] 4.5 POST z nieprawidłowym e-mailem/za krótkim hasłem przekierowuje z komunikatem walidacji — 6067667
+- [x] 4.6 Dezaktywacja konta `user` ustawia `disabled = true`; próba dla `admin` kończy się błędem bez zmiany — 6067667
+- [x] 4.7 Bezpośredni POST jako User na oba endpointy zwraca 403 — 6067667
 
 ### Phase 5: UI Admina — strona zarządzania użytkownikami
 
 #### Automated
 
-- [x] 5.1 Lint przechodzi: `npm run lint`
-- [x] 5.2 Build przechodzi: `npm run build`
+- [x] 5.1 Lint przechodzi: `npm run lint` — adc92d9
+- [x] 5.2 Build przechodzi: `npm run build` — adc92d9
 
 #### Manual
 
-- [ ] 5.3 `/admin` pokazuje link "Użytkownicy"; `/admin/users` pokazuje listę z poprawnymi e-mailami/rolami/statusem
-- [ ] 5.4 Dodanie Usera przez formularz pokazuje nowy wiersz na liście
-- [ ] 5.5 Dezaktywacja konta `user` przez UI (z potwierdzeniem) zmienia status i ukrywa przycisk
-- [ ] 5.6 Wiersz `admin` nigdy nie pokazuje przycisku "Dezaktywuj"
-- [ ] 5.7 User przekierowany z `/admin` i `/admin/users` na `/dashboard`
-- [ ] 5.8 Nowo utworzone, nie dezaktywowane konto loguje się poprawnie
+- [x] 5.3 `/admin` pokazuje link "Użytkownicy"; `/admin/users` pokazuje listę z poprawnymi e-mailami/rolami/statusem — adc92d9
+- [x] 5.4 Dodanie Usera przez formularz pokazuje nowy wiersz na liście — adc92d9
+- [x] 5.5 Dezaktywacja konta `user` przez UI (z potwierdzeniem) zmienia status i ukrywa przycisk — adc92d9
+- [x] 5.6 Wiersz `admin` nigdy nie pokazuje przycisku "Dezaktywuj" — adc92d9
+- [x] 5.7 User przekierowany z `/admin` i `/admin/users` na `/dashboard` — adc92d9
+- [x] 5.8 Nowo utworzone, nie dezaktywowane konto loguje się poprawnie — adc92d9
