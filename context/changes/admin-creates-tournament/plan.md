@@ -233,8 +233,8 @@ Pierwsza migracja po `profiles` z F-01 — brak istniejących danych `tournament
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi: `npm run lint`
-- [x] 2.2 Build przechodzi: `npm run build`
+- [x] 2.1 Lint przechodzi: `npm run lint` — 63da366
+- [x] 2.2 Build przechodzi: `npm run build` — 63da366
 
 #### Manual
 
@@ -247,8 +247,8 @@ Pierwsza migracja po `profiles` z F-01 — brak istniejących danych `tournament
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi: `npm run lint`
-- [ ] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint`
+- [x] 3.2 Build przechodzi: `npm run build`
 
 #### Manual
 
