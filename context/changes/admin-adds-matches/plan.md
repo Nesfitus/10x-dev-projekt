@@ -243,25 +243,25 @@ Nowa tabela, brak istniejących danych do migrowania. `on delete cascade` na `to
 
 #### Manual
 
-- [ ] 2.3 Poprawny POST dodawania tworzy wiersz i przekierowuje bez błędu
-- [ ] 2.4 POST z pustym `home_team`/`away_team` zwraca czytelny błąd walidacji
-- [ ] 2.5 POST dodawania do turnieju `closed` zwraca błąd, brak nowego wiersza
-- [ ] 2.6 POST usuwania meczu przyszłego usuwa wiersz
-- [ ] 2.7 POST usuwania meczu przeszłego zwraca błąd, wiersz pozostaje
-- [ ] 2.8 Bezpośredni POST jako User na oba endpointy zwraca 403
+- [x] 2.3 Poprawny POST dodawania tworzy wiersz i przekierowuje bez błędu — 7b6c5f6
+- [x] 2.4 POST z pustym `home_team`/`away_team` zwraca czytelny błąd walidacji — 7b6c5f6
+- [x] 2.5 POST dodawania do turnieju `closed` zwraca błąd, brak nowego wiersza — 7b6c5f6
+- [x] 2.6 POST usuwania meczu przyszłego usuwa wiersz — 7b6c5f6
+- [x] 2.7 POST usuwania meczu przeszłego zwraca błąd, wiersz pozostaje — 7b6c5f6
+- [x] 2.8 Bezpośredni POST jako User na oba endpointy zwraca 403 — 7b6c5f6
 
 ### Phase 3: UI Admina — zagnieżdżona strona spotkań
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi (`npm run lint`)
-- [x] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`) — 1a29f17
+- [x] 3.2 Type-check + build przechodzą (`npm run build`) — 1a29f17
 
 #### Manual
 
-- [ ] 3.3 Link "Spotkania" widoczny przy każdym turnieju na `/admin/tournaments`
-- [ ] 3.4 Dodanie spotkania przez formularz pokazuje nowy wiersz, poprawnie posortowany
-- [ ] 3.5 Turniej `closed` nie pokazuje formularza, tylko komunikat
-- [ ] 3.6 Przycisk "Usuń" widoczny tylko dla spotkań z terminem w przyszłości
-- [ ] 3.7 Nieistniejące `id` turnieju przekierowuje na `/admin/tournaments`
-- [ ] 3.8 User przekierowany na `/dashboard` z dowolnej strony spotkań
+- [x] 3.3 Link "Spotkania" widoczny przy każdym turnieju na `/admin/tournaments` — 1a29f17
+- [x] 3.4 Dodanie spotkania przez formularz pokazuje nowy wiersz, poprawnie posortowany — 1a29f17
+- [x] 3.5 Turniej `closed` nie pokazuje formularza, tylko komunikat — 1a29f17
+- [x] 3.6 Przycisk "Usuń" widoczny tylko dla spotkań z terminem w przyszłości — 1a29f17
+- [x] 3.7 Nieistniejące `id` turnieju przekierowuje na `/admin/tournaments` — 1a29f17
+- [x] 3.8 User przekierowany na `/dashboard` z dowolnej strony spotkań — 1a29f17
