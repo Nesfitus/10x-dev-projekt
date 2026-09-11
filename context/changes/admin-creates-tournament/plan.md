@@ -221,20 +221,20 @@ Pierwsza migracja po `profiles` z F-01 — brak istniejących danych `tournament
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto na zalinkowanym zdalnym projekcie Supabase: `npx supabase db push`
+- [x] 1.1 Migracja aplikuje się czysto na zalinkowanym zdalnym projekcie Supabase: `npx supabase db push` — a3660e0
 
 #### Manual
 
-- [x] 1.2 Tabela `tournaments` widoczna w Supabase Studio z poprawnymi kolumnami, RLS włączone
-- [x] 1.3 Drugi insert ze statusem `active` kończy się błędem `23505`; insert ze statusem `closed` się udaje
-- [x] 1.4 Admin widzi wiersze `tournaments`; User nic nie widzi (RLS)
+- [x] 1.2 Tabela `tournaments` widoczna w Supabase Studio z poprawnymi kolumnami, RLS włączone — a3660e0
+- [x] 1.3 Drugi insert ze statusem `active` kończy się błędem `23505`; insert ze statusem `closed` się udaje — a3660e0
+- [x] 1.4 Admin widzi wiersze `tournaments`; User nic nie widzi (RLS) — a3660e0
 
 ### Phase 2: Endpoint API tworzenia turnieju
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi: `npm run lint`
-- [ ] 2.2 Build przechodzi: `npm run build`
+- [x] 2.1 Lint przechodzi: `npm run lint`
+- [x] 2.2 Build przechodzi: `npm run build`
 
 #### Manual
 
