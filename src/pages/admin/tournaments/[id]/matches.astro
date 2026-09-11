@@ -1,0 +1,166 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { createClient } from "@/lib/supabase";
+import type { Match, Tournament } from "@/types";
+
+const { id } = Astro.params;
+const error = Astro.url.searchParams.get("error");
+
+const supabase = createClient(Astro.request.headers, Astro.cookies);
+
+// No early `return` here: a top-level `return` in an Astro frontmatter
+// script crashes this repo's ESLint (`@typescript-eslint/no-misused-promises`
+// hits a null parent node — a known astro-eslint-parser limitation). Missing
+// tournament/Supabase config is instead rendered as an inline error state
+// below, not a redirect (see plan.md Phase 3 for the accepted tradeoff).
+let tournament: Tournament | null = null;
+let matches: Match[] = [];
+
+if (supabase) {
+  const { data } = await supabase.from("tournaments").select("*").eq("id", id).single<Tournament>();
+  tournament = data ?? null;
+
+  if (tournament) {
+    const { data: matchData } = await supabase
+      .from("matches")
+      .select("*")
+      .eq("tournament_id", id)
+      .order("scheduled_at", { ascending: true })
+      .overrideTypes<Match[], { merge: false }>();
+    matches = matchData ?? [];
+  }
+}
+
+const now = new Date();
+
+// scheduled_at is stored as a literal timestamp (see Critical Implementation
+// Details in plan.md) — format via the raw ISO string, never
+// toLocaleString(), so the Admin always sees exactly what was entered.
+function formatScheduledAt(iso: string) {
+  return iso.slice(0, 16).replace("T", " ");
+}
+---
+
+<Layout title={tournament ? `Spotkania — ${tournament.name}` : "Spotkania"}>
+  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-white/10 p-8 text-white backdrop-blur-xl">
+      {
+        !tournament ? (
+          <>
+            <h1 class="mb-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-2xl font-bold text-transparent">
+              Nie znaleziono turnieju
+            </h1>
+            <p class="mb-6 text-sm text-blue-100/70">Turniej o podanym identyfikatorze nie istnieje.</p>
+            <a href="/admin/tournaments" class="text-xs text-blue-100/60 hover:text-blue-100">
+              ← Wróć do listy turniejów
+            </a>
+          </>
+        ) : (
+          <>
+            <h1 class="mb-1 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-2xl font-bold text-transparent">
+              Spotkania — {tournament.name}
+            </h1>
+            <p class="mb-6 text-xs text-blue-100/50 uppercase">{tournament.status}</p>
+
+            {error && (
+              <p class="mb-4 flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-900/30 px-3 py-2 text-sm text-red-300">
+                {error}
+              </p>
+            )}
+
+            {tournament.status === "active" ? (
+              <form method="POST" action={`/api/admin/tournaments/${tournament.id}/matches`} class="mb-8 space-y-4">
+                <div>
+                  <label for="home_team" class="mb-1 block text-sm text-blue-100/80">
+                    Gospodarz
+                  </label>
+                  <input
+                    id="home_team"
+                    name="home_team"
+                    type="text"
+                    required
+                    class="w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                    placeholder="np. Polska"
+                  />
+                </div>
+                <div>
+                  <label for="away_team" class="mb-1 block text-sm text-blue-100/80">
+                    Gość
+                  </label>
+                  <input
+                    id="away_team"
+                    name="away_team"
+                    type="text"
+                    required
+                    class="w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                    placeholder="np. Niemcy"
+                  />
+                </div>
+                <div>
+                  <label for="scheduled_at" class="mb-1 block text-sm text-blue-100/80">
+                    Termin
+                  </label>
+                  <input
+                    id="scheduled_at"
+                    name="scheduled_at"
+                    type="datetime-local"
+                    required
+                    class="w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="w-full rounded-lg bg-purple-600 px-4 py-2 font-medium text-white transition-colors hover:bg-purple-500"
+                >
+                  Dodaj spotkanie
+                </button>
+              </form>
+            ) : (
+              <p class="mb-8 text-sm text-blue-100/60">Turniej jest zamknięty — nie można dodawać nowych spotkań.</p>
+            )}
+
+            <h2 class="mb-3 text-lg font-semibold">Lista spotkań</h2>
+            {matches.length === 0 ? (
+              <p class="text-blue-100/50">Brak spotkań</p>
+            ) : (
+              <ul class="space-y-3">
+                {matches.map((match) => {
+                  const canDelete = new Date(match.scheduled_at) > now;
+                  return (
+                    <li class="rounded-lg border border-white/10 bg-white/5 p-4">
+                      <div class="flex items-center justify-between">
+                        <span class="font-semibold">
+                          {match.home_team} vs {match.away_team}
+                        </span>
+                        <span class="text-xs text-blue-100/60">{formatScheduledAt(match.scheduled_at)}</span>
+                      </div>
+                      {canDelete && (
+                        <form
+                          method="POST"
+                          action={`/api/admin/matches/${match.id}/delete`}
+                          class="mt-2"
+                          onsubmit="return confirm('Na pewno usunąć to spotkanie?')"
+                        >
+                          <button
+                            type="submit"
+                            class="rounded-lg border border-red-400/40 bg-red-900/20 px-3 py-1 text-xs text-red-300 transition-colors hover:bg-red-900/40"
+                          >
+                            Usuń
+                          </button>
+                        </form>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
+            <a href="/admin/tournaments" class="mt-6 inline-block text-xs text-blue-100/60 hover:text-blue-100">
+              ← Wróć do listy turniejów
+            </a>
+          </>
+        )
+      }
+    </div>
+  </div>
+</Layout>

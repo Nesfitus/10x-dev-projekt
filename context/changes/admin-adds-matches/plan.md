@@ -159,7 +159,9 @@ Dodajemy zagnieżdżoną stronę `/admin/tournaments/[id]/matches` (lista + form
 
 **Intent**: Dać Adminowi jedno miejsce, w którym widzi nazwę i status turnieju, listę jego spotkań posortowaną wg terminu, i — jeśli turniej jest `active` — formularz dodania nowego spotkania; każde spotkanie z terminem w przyszłości ma przycisk usuwania.
 
-**Contract**: W frontmatterze strony (server-side, Astro): `context.params.id` → zapytanie `supabase.from("tournaments").select("*").eq("id", id).single()` (brak wiersza → `Astro.redirect("/admin/tournaments")`); zapytanie `supabase.from("matches").select("*").eq("tournament_id", id).order("scheduled_at", { ascending: true })` przez istniejący `createClient` — RLS z Fazy 1 ogranicza wynik do widoku Admina. Renderuje: nazwę i status turnieju, komunikat błędu z query param (jeśli obecny), formularz `<form method="POST" action={`/api/admin/tournaments/${id}/matches`}>` z polami `home_team`, `away_team` (oba wymagane, `input`) i `scheduled_at` (`input type="datetime-local"`, wymagane) — widoczny tylko gdy `tournament.status === "active"`, w przeciwnym razie komunikat "Turniej jest zamknięty — nie można dodawać nowych spotkań"; listę spotkań (gospodarz vs gość, termin sformatowany akcesorami UTC — patrz Critical Implementation Details) — pusta lista pokazuje komunikat "Brak spotkań"; przy każdym spotkaniu z terminem w przyszłości (`new Date(match.scheduled_at) > new Date()`) — `<form method="POST" action={`/api/admin/matches/${match.id}/delete`}>` z przyciskiem "Usuń" i natywnym `confirm()` (spójnie z wzorcem dezaktywacji z S-02).
+**Contract**: W frontmatterze strony (server-side, Astro): `context.params.id` → zapytanie `supabase.from("tournaments").select("*").eq("id", id).single()`. Brak wiersza lub brak konfiguracji Supabase → strona renderuje inline komunikat błędu "Nie znaleziono turnieju" (bez przekierowania — patrz nota poniżej o ograniczeniu ESLint) zamiast listy/formularza. Gdy turniej znaleziony: zapytanie `supabase.from("matches").select("*").eq("tournament_id", id).order("scheduled_at", { ascending: true })` przez istniejący `createClient` — RLS z Fazy 1 ogranicza wynik do widoku Admina. Renderuje: nazwę i status turnieju, komunikat błędu z query param (jeśli obecny), formularz `<form method="POST" action={`/api/admin/tournaments/${id}/matches`}>` z polami `home_team`, `away_team` (oba wymagane, `input`) i `scheduled_at` (`input type="datetime-local"`, wymagane) — widoczny tylko gdy `tournament.status === "active"`, w przeciwnym razie komunikat "Turniej jest zamknięty — nie można dodawać nowych spotkań"; listę spotkań (gospodarz vs gość, termin sformatowany akcesorami UTC — patrz Critical Implementation Details) — pusta lista pokazuje komunikat "Brak spotkań"; przy każdym spotkaniu z terminem w przyszłości (`new Date(match.scheduled_at) > new Date()`) — `<form method="POST" action={`/api/admin/matches/${match.id}/delete`}>` z przyciskiem "Usuń" i natywnym `confirm()` (spójnie z wzorcem dezaktywacji z S-02).
+
+**Uwaga (odkryta podczas implementacji)**: kontrakt pierwotnie zakładał `Astro.redirect("/admin/tournaments")` przy braku turnieju. `return X()` na najwyższym poziomie frontmattera strony `.astro` powoduje twardy crash `npm run lint` w tym repo (`@typescript-eslint/no-misused-promises` trafia na węzeł bez rodzica — ograniczenie `astro-eslint-parser` w tej wersji zależności), potwierdzone na izolowanym pliku testowym. Zaakceptowana z użytkownikiem alternatywa: brak turnieju renderuje inline komunikat błędu na tej samej stronie zamiast przekierowania — patrz zaktualizowana Success Criteria poniżej.
 
 ### Success Criteria:
 
@@ -175,7 +177,7 @@ Dodajemy zagnieżdżoną stronę `/admin/tournaments/[id]/matches` (lista + form
 - Strona spotkań turnieju `closed` (jeśli istnieje taki w danych testowych) nie pokazuje formularza, tylko komunikat.
 - Spotkanie z terminem w przyszłości ma widoczny przycisk "Usuń"; kliknięcie (po potwierdzeniu) usuwa je z listy.
 - Spotkanie z terminem w przeszłości nie ma przycisku "Usuń".
-- Wejście na `/admin/tournaments/{nieistniejące-id}/matches` przekierowuje na `/admin/tournaments`.
+- Wejście na `/admin/tournaments/{nieistniejące-id}/matches` pokazuje czytelny komunikat błędu "Nie znaleziono turnieju" (bez przekierowania — patrz nota w Changes Required, decyzja podjęta podczas implementacji ze względu na crash ESLint przy top-level `return` w Astro).
 - Zalogowany jako przykładowy User → wejście na dowolną stronę `/admin/tournaments/{id}/matches` przekierowuje na `/dashboard` (middleware, bez zmian).
 
 **Implementation Note**: Po zakończeniu tej fazy zatrzymaj się i potwierdź manualnie wszystkie siedem ścieżek powyżej — to ostatnia faza tej zmiany.
@@ -236,8 +238,8 @@ Nowa tabela, brak istniejących danych do migrowania. `on delete cascade` na `to
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi (`npm run lint`)
-- [x] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`) — 7b6c5f6
+- [x] 2.2 Type-check + build przechodzą (`npm run build`) — 7b6c5f6
 
 #### Manual
 
@@ -252,8 +254,8 @@ Nowa tabela, brak istniejących danych do migrowania. `on delete cascade` na `to
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi (`npm run lint`)
-- [ ] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`)
+- [x] 3.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
