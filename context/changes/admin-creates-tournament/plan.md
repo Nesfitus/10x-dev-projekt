@@ -238,22 +238,22 @@ Pierwsza migracja po `profiles` z F-01 — brak istniejących danych `tournament
 
 #### Manual
 
-- [ ] 2.3 Poprawny POST jako Admin tworzy wiersz i przekierowuje bez błędu
-- [ ] 2.4 POST bez `name` przekierowuje z komunikatem walidacji
-- [ ] 2.5 Drugi POST (aktywny turniej już istnieje) przekierowuje z czytelnym komunikatem, nie surowym błędem bazy
-- [ ] 2.6 Bezpośredni POST jako User zwraca 403
+- [x] 2.3 Poprawny POST jako Admin tworzy wiersz i przekierowuje bez błędu — 5965b1e
+- [x] 2.4 POST bez `name` przekierowuje z komunikatem walidacji — 5965b1e
+- [x] 2.5 Drugi POST (aktywny turniej już istnieje) przekierowuje z czytelnym komunikatem, nie surowym błędem bazy — 5965b1e
+- [x] 2.6 Bezpośredni POST jako User zwraca 403 — 5965b1e
 
 ### Phase 3: UI Admina — hub i strona turniejów
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi: `npm run lint`
-- [x] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint` — 5965b1e
+- [x] 3.2 Build przechodzi: `npm run build` — 5965b1e
 
 #### Manual
 
-- [ ] 3.3 Admin: `/admin` pokazuje hub, `/admin/tournaments` pokazuje pusty stan przed pierwszym turniejem
-- [ ] 3.4 Utworzenie turnieju przez formularz pokazuje nowy wiersz na liście
-- [ ] 3.5 Próba drugiego turnieju pokazuje czytelny błąd, brak nowego wiersza na liście
-- [ ] 3.6 User przekierowany z `/admin` i `/admin/tournaments` na `/dashboard`
-- [ ] 3.7 Niezalogowany przekierowany z `/admin/tournaments` na `/auth/signin`
+- [x] 3.3 Admin: `/admin` pokazuje hub, `/admin/tournaments` pokazuje pusty stan przed pierwszym turniejem — 5965b1e
+- [x] 3.4 Utworzenie turnieju przez formularz pokazuje nowy wiersz na liście — 5965b1e
+- [x] 3.5 Próba drugiego turnieju pokazuje czytelny błąd, brak nowego wiersza na liście — 5965b1e
+- [x] 3.6 User przekierowany z `/admin` i `/admin/tournaments` na `/dashboard` — 5965b1e
+- [x] 3.7 Niezalogowany przekierowany z `/admin/tournaments` na `/auth/signin` — 5965b1e
