@@ -15,7 +15,7 @@ Audit trail of the first production deployment. Consumed downstream by milestone
 | Git repository | Initialized locally, pushed to `https://github.com/Nesfitus/10x-dev-projekt` (branch `main`) |
 | Worker name | `wrangler.jsonc` renamed from default `10x-astro-starter` to `typer-sportowy` |
 | Custom domain / zone | None — using default `*.workers.dev` subdomain. Auto Minify (zone-level setting) is therefore not applicable; **revisit if a custom domain is ever attached** |
-| Production secrets | `SUPABASE_URL`, `SUPABASE_KEY` set via `wrangler secret put` (values never entered in chat) |
+| Production secrets | `SUPABASE_URL`, `SUPABASE_KEY`, `SUPABASE_SERVICE_ROLE_KEY` set via `wrangler secret put` (values never entered in chat; `SUPABASE_SERVICE_ROLE_KEY` from Supabase Dashboard → Project Settings → API → `service_role` secret, added for S-02 admin-manages-users) |
 | workers.dev subdomain | Registered one-time via Cloudflare onboarding flow (was a hard blocker on first `wrangler deploy` attempt) |
 | First manual deploy | `npm run build` + `npx wrangler deploy` → **https://typer-sportowy.patrykshon.workers.dev**, version `13e6a5b0-3151-438b-bf80-f323d3e26f47` |
 | Smoke test | `/`, `/auth/signin`, `/auth/signup` all returned `200 OK` |
@@ -30,7 +30,7 @@ Audit trail of the first production deployment. Consumed downstream by milestone
 
 - **Live URL**: https://typer-sportowy.patrykshon.workers.dev
 - **Pricing tier**: Free (100k req/day, 10ms CPU/invocation cap)
-- **Secrets configured**: `SUPABASE_URL`, `SUPABASE_KEY` (production, via `wrangler secret put`)
+- **Secrets configured**: `SUPABASE_URL`, `SUPABASE_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (production, via `wrangler secret put`)
 - **Auto-deploy**: push to `main` on `Nesfitus/10x-dev-projekt` → Cloudflare Workers Builds → live in ~1 minute
 - **Rollback path**: `npx wrangler rollback` (reverts Worker code/version only — does not revert any Supabase schema migration; not currently a concern since this project has no migrations yet, auth-only via `auth.users`)
 - **Manual approval gates that remain**: any future `wrangler secret put` (secret rotation), switching pricing tier, and any destructive Cloudflare dashboard action

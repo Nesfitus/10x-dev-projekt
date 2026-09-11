@@ -315,24 +315,24 @@ Migracja z Fazy 1 jest addytywna (`ADD COLUMN ... DEFAULT false`) — nie wymaga
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto na zalinkowanym zdalnym projekcie Supabase: `npx supabase db push`
+- [x] 1.1 Migracja aplikuje się czysto na zalinkowanym zdalnym projekcie Supabase: `npx supabase db push` — 27b1806
 
 #### Manual
 
-- [x] 1.2 Kolumna `disabled` widoczna w `profiles` w Supabase Studio, wszystkie istniejące wiersze mają `false`
+- [x] 1.2 Kolumna `disabled` widoczna w `profiles` w Supabase Studio, wszystkie istniejące wiersze mają `false` — 27b1806
 
 ### Phase 2: Sekret `service_role` i klient administracyjny
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi: `npm run lint`
-- [ ] 2.2 Build przechodzi: `npm run build`
+- [x] 2.1 Lint przechodzi: `npm run lint`
+- [x] 2.2 Build przechodzi: `npm run build`
 
 #### Manual
 
-- [ ] 2.3 Sekret `SUPABASE_SERVICE_ROLE_KEY` ustawiony lokalnie w `.env`
-- [ ] 2.4 Sekret ustawiony na żywym Workerze: `npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY`
-- [ ] 2.5 `context/deployment/deploy-plan.md` odzwierciedla trzeci skonfigurowany sekret
+- [x] 2.3 Sekret `SUPABASE_SERVICE_ROLE_KEY` ustawiony lokalnie w `.env`
+- [x] 2.4 Sekret ustawiony na żywym Workerze: `npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY`
+- [x] 2.5 `context/deployment/deploy-plan.md` odzwierciedla trzeci skonfigurowany sekret
 
 ### Phase 3: Middleware — egzekwowanie dezaktywacji konta
 
