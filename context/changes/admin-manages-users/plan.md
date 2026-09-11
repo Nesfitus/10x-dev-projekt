@@ -338,21 +338,21 @@ Migracja z Fazy 1 jest addytywna (`ADD COLUMN ... DEFAULT false`) — nie wymaga
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi: `npm run lint`
-- [x] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint` — 53789a6
+- [x] 3.2 Build przechodzi: `npm run build` — 53789a6
 
 #### Manual
 
-- [ ] 3.3 Ręczne ustawienie `disabled = true` dla testowego konta → redirect z `/dashboard` na `/auth/signin` z komunikatem
-- [ ] 3.4 To konto nie ma już aktywnej sesji po odświeżeniu strony
-- [ ] 3.5 Zwykłe konto nadal działa bez zmian
+- [x] 3.3 Ręczne ustawienie `disabled = true` dla testowego konta → redirect z `/dashboard` na `/auth/signin` z komunikatem — 53789a6
+- [x] 3.4 To konto nie ma już aktywnej sesji po odświeżeniu strony — 53789a6
+- [x] 3.5 Zwykłe konto nadal działa bez zmian — 53789a6
 
 ### Phase 4: Endpointy API — tworzenie i dezaktywacja konta
 
 #### Automated
 
-- [ ] 4.1 Lint przechodzi: `npm run lint`
-- [ ] 4.2 Build przechodzi: `npm run build`
+- [x] 4.1 Lint przechodzi: `npm run lint`
+- [x] 4.2 Build przechodzi: `npm run build`
 
 #### Manual
 
