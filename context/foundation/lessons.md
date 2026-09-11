@@ -15,3 +15,10 @@
 - **Problem**: To środowisko implementacyjne nie ma dostępnego Dockera, więc `npx supabase start`/`npx supabase db reset` (lokalny stack) nie mogą zostać uruchomione — agent traci czas na próby, zanim odkryje, że projekt ma już zalinkowany zdalny projekt Supabase (`supabase/.temp/project-ref`), ten sam, co produkcja. Analogicznie, zmiany w kodzie (strony/API) są realnie weryfikowalne dopiero po wypchnięciu na `main`, bo Cloudflare Workers Builds robi auto-deploy, a nie ma lokalnego trybu podglądu działającego względem tego samego zdalnego Supabase.
 - **Rule**: Nie instaluj Dockera ani nie uruchamiaj lokalnego stacku Supabase. Migracje weryfikuj przez `npx supabase db push` / `npx supabase migration list` na już zalinkowanym zdalnym projekcie. Zmiany w kodzie commituj i pushuj (`git push origin main`), aby wyzwolić auto-deploy Cloudflare Workers Builds — dopiero potem proś użytkownika o manualną weryfikację na żywej, wdrożonej aplikacji, nie na `localhost`.
 - **Applies to**: plan, implement
+
+## Komunikuj się w języku polskim
+
+- **Context**: Cała praca nad tym projektem (rozmowa z użytkownikiem, pytania, podsumowania, plany, briefy).
+- **Problem**: Domyślny język agenta to angielski, ale właściciel projektu oczekuje komunikacji po polsku — treść PRD/roadmapy też jest po polsku.
+- **Rule**: Prowadź całą komunikację z użytkownikiem (pytania, wyjaśnienia, podsumowania) w języku polskim. Nazwy plików, ścieżek, identyfikatorów kodu (zmienne, tabele, endpointy) oraz technicznych komend pozostają bez zmian (angielskie/techniczne, zgodnie z konwencją repo).
+- **Applies to**: all

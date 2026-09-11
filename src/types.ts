@@ -17,3 +17,13 @@ export interface Tournament {
   created_by: string;
   created_at: string;
 }
+
+export interface Match {
+  id: string;
+  tournament_id: string;
+  home_team: string;
+  away_team: string;
+  scheduled_at: string;
+  created_by: string;
+  created_at: string;
+}
