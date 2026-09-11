@@ -70,6 +70,16 @@ Tworzymy drugą tabelę domenową projektu wraz z politykami RLS ograniczonymi d
 
 **Contract**: Tabela `public.tournaments`: `id uuid primary key default gen_random_uuid()`, `name text not null`, `description text`, `status text not null default 'active' check (status in ('active', 'closed'))`, `created_by uuid not null references auth.users (id)`, `created_at timestamptz not null default now()`. RLS włączone; polityki `admin_select_tournaments` i `admin_insert_tournaments` używające `public.is_admin(auth.uid())` (funkcja z F-01, bez zmian). Częściowy unikalny indeks wymuszający regułę "jeden aktywny turniej naraz" — patrz Critical Implementation Details po dokładną definicję.
 
+#### 2. Typy domenowe
+
+**File**: `src/types.ts`
+
+**Intent**: Dodać typ `Tournament` odzwierciedlający nową tabelę, potrzebny do typowania wyniku zapytań w Fazie 3 (`tournaments.astro`).
+
+**Contract**: Nowy eksportowany typ `TournamentStatus` (`"active" | "closed"`) i interfejs `Tournament` z polami `id`, `name`, `description`, `status`, `created_by`, `created_at`.
+
+*(Dopisane po fakcie podczas `/10x-impl-review` — F1: ta zmiana została faktycznie wdrożona w Fazie 1, ale pierwotnie nie była udokumentowana w planie.)*
+
 ### Success Criteria:
 
 #### Automated Verification:
