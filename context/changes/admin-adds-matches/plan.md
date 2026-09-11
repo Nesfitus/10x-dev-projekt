@@ -223,21 +223,21 @@ Nowa tabela, brak istniejących danych do migrowania. `on delete cascade` na `to
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`)
-- [x] 1.2 Type-check + build przechodzą (`npm run build`)
+- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`) — f8e018b
+- [x] 1.2 Type-check + build przechodzą (`npm run build`) — f8e018b
 
 #### Manual
 
-- [x] 1.3 Tabela `matches` widoczna w Supabase Studio z poprawnymi kolumnami, FK, RLS włączone
-- [x] 1.4 RLS: Admin widzi wiersze, User nie widzi żadnych
-- [x] 1.5 Kaskadowe usunięcie spotkań przy usunięciu turnieju
+- [x] 1.3 Tabela `matches` widoczna w Supabase Studio z poprawnymi kolumnami, FK, RLS włączone — f8e018b
+- [x] 1.4 RLS: Admin widzi wiersze, User nie widzi żadnych — f8e018b
+- [x] 1.5 Kaskadowe usunięcie spotkań przy usunięciu turnieju — f8e018b
 
 ### Phase 2: Endpointy API — dodawanie i usuwanie spotkania
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi (`npm run lint`)
-- [ ] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`)
+- [x] 2.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
