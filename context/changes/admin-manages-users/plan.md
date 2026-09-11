@@ -366,8 +366,8 @@ Migracja z Fazy 1 jest addytywna (`ADD COLUMN ... DEFAULT false`) — nie wymaga
 
 #### Automated
 
-- [ ] 5.1 Lint przechodzi: `npm run lint`
-- [ ] 5.2 Build przechodzi: `npm run build`
+- [x] 5.1 Lint przechodzi: `npm run lint`
+- [x] 5.2 Build przechodzi: `npm run build`
 
 #### Manual
 

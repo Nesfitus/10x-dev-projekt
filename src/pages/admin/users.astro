@@ -1,0 +1,114 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { createAdminClient } from "@/lib/supabase";
+import type { Profile } from "@/types";
+
+const error = Astro.url.searchParams.get("error");
+
+interface UserRow extends Profile {
+  email: string | null;
+}
+
+const adminClient = createAdminClient();
+let userRows: UserRow[] = [];
+
+if (adminClient) {
+  const [{ data: usersData }, { data: profiles }] = await Promise.all([
+    adminClient.auth.admin.listUsers(),
+    adminClient
+      .from("profiles")
+      .select("id, role, disabled, created_at")
+      .order("created_at", { ascending: false })
+      .overrideTypes<Profile[], { merge: false }>(),
+  ]);
+
+  const emailById = new Map(usersData.users.map((u) => [u.id, u.email ?? null]));
+  userRows = (profiles ?? []).map((profile) => ({
+    ...profile,
+    email: emailById.get(profile.id) ?? null,
+  }));
+}
+---
+
+<Layout title="Użytkownicy">
+  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-white/10 p-8 text-white backdrop-blur-xl">
+      <h1 class="mb-6 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-2xl font-bold text-transparent">
+        Użytkownicy
+      </h1>
+
+      {
+        error && (
+          <p class="mb-4 flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-900/30 px-3 py-2 text-sm text-red-300">
+            {error}
+          </p>
+        )
+      }
+
+      <form method="POST" action="/api/admin/users" class="mb-8 space-y-4">
+        <div>
+          <label for="email" class="mb-1 block text-sm text-blue-100/80">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            placeholder="user@example.com"
+          />
+        </div>
+        <div>
+          <label for="password" class="mb-1 block text-sm text-blue-100/80">Hasło</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            class="w-full rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white placeholder-white/40 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            placeholder="Min. 6 znaków"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-purple-600 px-4 py-2 font-medium text-white transition-colors hover:bg-purple-500"
+        >
+          Dodaj użytkownika
+        </button>
+      </form>
+
+      <h2 class="mb-3 text-lg font-semibold">Lista użytkowników</h2>
+      {
+        userRows.length === 0 ? (
+          <p class="text-blue-100/50">Brak użytkowników</p>
+        ) : (
+          <ul class="space-y-3">
+            {userRows.map((row) => (
+              <li class="rounded-lg border border-white/10 bg-white/5 p-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold">{row.email ?? row.id}</span>
+                  <span class="rounded-full bg-white/10 px-2 py-0.5 text-xs uppercase">{row.role}</span>
+                </div>
+                <p class="mt-1 text-sm text-blue-100/70">{row.disabled ? "dezaktywowany" : "aktywny"}</p>
+                {row.role === "user" && !row.disabled && (
+                  <form
+                    method="POST"
+                    action={`/api/admin/users/${row.id}/disable`}
+                    class="mt-2"
+                    onsubmit="return confirm('Na pewno dezaktywować to konto?')"
+                  >
+                    <button
+                      type="submit"
+                      class="rounded-lg border border-red-400/40 bg-red-900/20 px-3 py-1 text-xs text-red-300 transition-colors hover:bg-red-900/40"
+                    >
+                      Dezaktywuj
+                    </button>
+                  </form>
+                )}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</Layout>

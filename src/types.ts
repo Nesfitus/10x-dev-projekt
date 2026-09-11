@@ -3,6 +3,7 @@ export type UserRole = "admin" | "user";
 export interface Profile {
   id: string;
   role: UserRole;
+  disabled: boolean;
   created_at: string;
 }
 
