@@ -325,21 +325,21 @@ Migracja z Fazy 1 jest addytywna (`ADD COLUMN ... DEFAULT false`) — nie wymaga
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi: `npm run lint`
-- [x] 2.2 Build przechodzi: `npm run build`
+- [x] 2.1 Lint przechodzi: `npm run lint` — 9edb8e9
+- [x] 2.2 Build przechodzi: `npm run build` — 9edb8e9
 
 #### Manual
 
-- [x] 2.3 Sekret `SUPABASE_SERVICE_ROLE_KEY` ustawiony lokalnie w `.env`
-- [x] 2.4 Sekret ustawiony na żywym Workerze: `npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY`
-- [x] 2.5 `context/deployment/deploy-plan.md` odzwierciedla trzeci skonfigurowany sekret
+- [x] 2.3 Sekret `SUPABASE_SERVICE_ROLE_KEY` ustawiony lokalnie w `.env` — 9edb8e9
+- [x] 2.4 Sekret ustawiony na żywym Workerze: `npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY` — 9edb8e9
+- [x] 2.5 `context/deployment/deploy-plan.md` odzwierciedla trzeci skonfigurowany sekret — 9edb8e9
 
 ### Phase 3: Middleware — egzekwowanie dezaktywacji konta
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi: `npm run lint`
-- [ ] 3.2 Build przechodzi: `npm run build`
+- [x] 3.1 Lint przechodzi: `npm run lint`
+- [x] 3.2 Build przechodzi: `npm run build`
 
 #### Manual
 
