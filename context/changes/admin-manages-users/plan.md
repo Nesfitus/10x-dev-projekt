@@ -252,6 +252,8 @@ Dodajemy stronę `/admin/users` (lista + formularz + akcja dezaktywacji) i link 
 
 **Contract**: W frontmatterze: odczyt `error` z `Astro.url.searchParams`; przez `createAdminClient()` (jeśli dostępny) pobiera `auth.admin.listUsers()` (źródło e-maili) oraz `profiles.select("id, role, disabled, created_at")` (bez RLS — bezpieczne, strona już chroniona przez `ADMIN_ROUTES` w middleware), łączy oba zbiory w pamięci po `id`, sortuje po `created_at` malejąco. Renderuje: komunikat błędu (jeśli `error` obecny, statyczny markup jak w `/admin/tournaments`), formularz `<form method="POST" action="/api/admin/users">` z polami `email` i `password` (oba wymagane, `input`), oraz listę kont (e-mail, rola, status "aktywny"/"dezaktywowany") — przy wierszach z rolą `user` i `disabled === false` renderuje `<form method="POST" action="/api/admin/users/{id}/disable">` z przyciskiem "Dezaktywuj" i inline `onsubmit="return confirm('Na pewno dezaktywować to konto?')"` (patrz decyzja o potwierdzeniu); wiersze `admin` lub już dezaktywowane nie mają przycisku. Pusta lista pokazuje komunikat "Brak użytkowników" (w praktyce nieosiągalne — co najmniej konto Admina zawsze istnieje, ale zachowuje spójność ze wzorcem `/admin/tournaments`).
 
+**Supporting change**: `src/types.ts` — rozszerza `Profile` o pole `disabled: boolean`, wymagane przez typowanie w tej fazie (`UserRow extends Profile`) i w Fazie 3 (middleware).
+
 ### Success Criteria:
 
 #### Automated Verification:

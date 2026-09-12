@@ -22,7 +22,8 @@ if (adminClient) {
       .overrideTypes<Profile[], { merge: false }>(),
   ]);
 
-  const emailById = new Map(usersData.users.map((u) => [u.id, u.email ?? null]));
+  const userList = usersData?.users ?? [];
+  const emailById = new Map(userList.map((u) => [u.id, u.email ?? null]));
   userRows = (profiles ?? []).map((profile) => ({
     ...profile,
     email: emailById.get(profile.id) ?? null,
