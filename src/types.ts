@@ -27,3 +27,12 @@ export interface Match {
   created_by: string;
   created_at: string;
 }
+
+export interface Prediction {
+  id: string;
+  match_id: string;
+  user_id: string;
+  predicted_home_score: number;
+  predicted_away_score: number;
+  created_at: string;
+}

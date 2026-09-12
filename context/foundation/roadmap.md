@@ -3,7 +3,7 @@ project: Typer Sportowy
 version: 1
 status: draft
 created: 2026-09-08
-updated: 2026-09-11
+updated: 2026-09-12
 prd_version: 1
 main_goal: speed
 top_blocker: capacity
@@ -45,7 +45,7 @@ Pracownicy biura, którzy dziś ręcznie typują wyniki sportowe i liczą punkty
 | S-01 | admin-creates-tournament                | Admin może założyć nowy turniej                                              | F-01            | FR-004                | in-progress |
 | S-02 | admin-manages-users                     | Admin może dodać konta Userów do systemu (bez samorejestracji)                | F-01            | FR-002, FR-003        | in-progress |
 | S-03 | admin-adds-matches                      | Admin może dodać spotkania do turnieju z terminem                             | S-01, F-01      | FR-005                | in-progress |
-| S-04 | user-submits-prediction                 | User może wytypować wynik spotkania do jego rozpoczęcia                       | S-02, S-03, F-01 | US-01, FR-006         | proposed |
+| S-04 | user-submits-prediction                 | User może wytypować wynik spotkania do jego rozpoczęcia                       | S-02, S-03, F-01 | US-01, FR-006         | in-progress |
 | S-05 | admin-enters-result-auto-scoring        | Admin wprowadza faktyczny wynik; system automatycznie nalicza punkty Userowi   | S-04, F-01      | US-01, FR-007, FR-008 | proposed |
 | S-06 | live-tournament-ranking                 | User widzi pełny, bieżący ranking turnieju                                   | S-05            | FR-010                | proposed |
 | S-07 | admin-closes-tournament-and-winners     | Admin jawnie zamyka turniej; system wyłania zwycięzców (dopuszczalny remis)   | S-06, F-01      | FR-009, FR-011        | proposed |
@@ -135,7 +135,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Musi poprawnie wymuszać blokadę czasową (typowanie tylko do startu spotkania) oraz niewidoczność cudzych typów — błąd tutaj bezpośrednio narusza Guardrails PRD.
-- **Status:** proposed
+- **Status:** in-progress
 
 ### S-05: Admin wprowadza wynik, system automatycznie nalicza punkty
 
