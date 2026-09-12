@@ -24,6 +24,8 @@ export interface Match {
   home_team: string;
   away_team: string;
   scheduled_at: string;
+  actual_home_score: number | null;
+  actual_away_score: number | null;
   created_by: string;
   created_at: string;
 }
@@ -34,5 +36,6 @@ export interface Prediction {
   user_id: string;
   predicted_home_score: number;
   predicted_away_score: number;
+  points: number | null;
   created_at: string;
 }
