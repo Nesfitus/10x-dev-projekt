@@ -223,15 +223,15 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Manual
 
-- [ ] 2.3 Poprawny POST zapisuje wynik i przekierowuje bez błędu
-- [ ] 2.4 Dokładny wynik → 3 pkt
-- [ ] 2.5 Trafiony kierunek (w tym remis:remis różnymi wynikami) → 1 pkt
-- [ ] 2.6 Zły kierunek → 0 pkt
-- [ ] 2.7 Mecz bez typów: POST się udaje, brak błędu
-- [ ] 2.8 Drugi POST dla tego samego meczu zwraca błąd, brak zmiany danych
-- [ ] 2.9 POST dla meczu nierozpoczętego zwraca błąd
-- [ ] 2.10 POST dla zamkniętego turnieju zwraca błąd
-- [ ] 2.11 Bezpośredni POST jako User zwraca 403
+- [x] 2.3 Poprawny POST zapisuje wynik i przekierowuje bez błędu — 32d86f7
+- [x] 2.4 Dokładny wynik → 3 pkt — 32d86f7
+- [x] 2.5 Trafiony kierunek (w tym remis:remis różnymi wynikami) → 1 pkt — 32d86f7
+- [x] 2.6 Zły kierunek → 0 pkt — 32d86f7
+- [x] 2.7 Mecz bez typów: POST się udaje, brak błędu — 32d86f7
+- [x] 2.8 Drugi POST dla tego samego meczu zwraca błąd, brak zmiany danych — 32d86f7
+- [x] 2.9 POST dla meczu nierozpoczętego zwraca błąd — 32d86f7
+- [x] 2.10 POST dla zamkniętego turnieju zwraca błąd — 32d86f7
+- [x] 2.11 Bezpośredni POST jako User zwraca 403 — 32d86f7
 
 ### Phase 3: UI — formularz i odczyt wyniku na stronie spotkań
 
@@ -242,6 +242,6 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Manual
 
-- [ ] 3.3 Rozpoczęty mecz bez wyniku pokazuje formularz; zapis pokazuje wynik bez formularza
-- [ ] 3.4 Mecz z wynikiem nigdy nie pokazuje formularza
-- [ ] 3.5 Mecz nierozpoczęty nie pokazuje ani formularza, ani wyniku
+- [x] 3.3 Rozpoczęty mecz bez wyniku pokazuje formularz; zapis pokazuje wynik bez formularza — 32d86f7
+- [x] 3.4 Mecz z wynikiem nigdy nie pokazuje formularza — 32d86f7
+- [x] 3.5 Mecz nierozpoczęty nie pokazuje ani formularza, ani wyniku — 32d86f7
