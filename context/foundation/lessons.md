@@ -22,3 +22,10 @@
 - **Problem**: Domyślny język agenta to angielski, ale właściciel projektu oczekuje komunikacji po polsku — treść PRD/roadmapy też jest po polsku.
 - **Rule**: Prowadź całą komunikację z użytkownikiem (pytania, wyjaśnienia, podsumowania) w języku polskim. Nazwy plików, ścieżek, identyfikatorów kodu (zmienne, tabele, endpointy) oraz technicznych komend pozostają bez zmian (angielskie/techniczne, zgodnie z konwencją repo).
 - **Applies to**: all
+
+## Wskaż komendy i sekrety potrzebne do publikacji aplikacji na innym komputerze
+
+- **Context**: Faza /10x-plan lub /10x-implement dotycząca wdrożenia/publikacji aplikacji (deploy na Cloudflare Workers) lub przygotowania projektu do uruchomienia na innym komputerze po sklonowaniu repozytorium.
+- **Problem**: Agent kończy implementację/plan bez wskazania, jakie zmienne środowiskowe, sekrety (np. SUPABASE_URL, SUPABASE_KEY), migracje czy komendy (npm install, wrangler secret put, supabase link, wrangler deploy) są potrzebne, aby ktoś inny mógł sklonować repozytorium i uruchomić/opublikować aplikację od zera — użytkownik dowiaduje się o brakach dopiero przy realnej próbie uruchomienia na innym komputerze.
+- **Rule**: Przy każdej zmianie dotyczącej wdrożenia/publikacji lub kończąc plan/implementację, dopytaj użytkownika o brakujące zmienne środowiskowe i sekrety, a następnie jawnie wypisz pełną, gotową do wykonania listę komend (instalacja zależności, konfiguracja `.env`/`.dev.vars`, `npx supabase link`, `npx wrangler secret put ...`, `npm run build`, `npx wrangler deploy` itd.) potrzebnych, aby aplikacja zadziałała na innym komputerze po sklonowaniu repozytorium z zerowego stanu.
+- **Applies to**: all
