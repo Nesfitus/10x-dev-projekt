@@ -1,7 +1,7 @@
 ---
 change_id: admin-enters-result-auto-scoring
 title: "Admin wprowadza wynik, system automatycznie nalicza punkty"
-status: implemented
+status: impl_reviewed
 created: 2026-09-12
 updated: 2026-09-12
 roadmap_id: S-05
