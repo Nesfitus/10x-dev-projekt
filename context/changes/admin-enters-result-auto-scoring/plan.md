@@ -204,20 +204,20 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Automated
 
-- [ ] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`)
-- [ ] 1.2 Type-check + build przechodzą (`npm run build`)
+- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`) — ccd46c2
+- [x] 1.2 Type-check + build przechodzą (`npm run build`) — ccd46c2
 
 #### Manual
 
-- [ ] 1.3 Nowe kolumny widoczne w Supabase Studio, wszystkie istniejące wiersze mają `NULL`
-- [ ] 1.4 Admin może zaktualizować `actual_home_score`/`points`; User nie może (RLS blokuje)
+- [x] 1.3 Nowe kolumny widoczne w Supabase Studio, wszystkie istniejące wiersze mają `NULL` — ccd46c2
+- [x] 1.4 Admin może zaktualizować `actual_home_score`/`points`; User nie może (RLS blokuje) — ccd46c2
 
 ### Phase 2: Endpoint API — wprowadzenie wyniku i naliczenie punktów
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi (`npm run lint`)
-- [ ] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`)
+- [x] 2.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
@@ -235,8 +235,8 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi (`npm run lint`)
-- [ ] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`)
+- [x] 3.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
