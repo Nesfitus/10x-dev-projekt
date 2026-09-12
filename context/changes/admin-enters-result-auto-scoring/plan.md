@@ -216,8 +216,8 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi (`npm run lint`)
-- [x] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`) — f271769
+- [x] 2.2 Type-check + build przechodzą (`npm run build`) — f271769
 
 #### Manual
 
@@ -235,8 +235,8 @@ Migracja jest addytywna (`ADD COLUMN` nullable) — brak backfillu, wszystkie is
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi (`npm run lint`)
-- [x] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`) — f271769
+- [x] 3.2 Type-check + build przechodzą (`npm run build`) — f271769
 
 #### Manual
 

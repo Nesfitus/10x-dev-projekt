@@ -136,52 +136,51 @@ function formatScheduledAt(iso: string) {
                         </span>
                         <span class="text-xs text-blue-100/60">{formatScheduledAt(match.scheduled_at)}</span>
                       </div>
-                      {hasResult ? (
+                      {hasResult && (
                         <p class="mt-2 text-sm text-blue-100/80">
                           Wynik: {match.actual_home_score}:{match.actual_away_score}
                         </p>
-                      ) : (
-                        canEnterResult && (
-                          <form
-                            method="POST"
-                            action={`/api/admin/matches/${match.id}/result`}
-                            class="mt-2 flex items-end gap-2"
+                      )}
+                      {canEnterResult && (
+                        <form
+                          method="POST"
+                          action={`/api/admin/matches/${match.id}/result`}
+                          class="mt-2 flex items-end gap-2"
+                        >
+                          <div>
+                            <label for={`actual-home-${match.id}`} class="mb-1 block text-xs text-blue-100/70">
+                              {match.home_team}
+                            </label>
+                            <input
+                              id={`actual-home-${match.id}`}
+                              name="actual_home_score"
+                              type="number"
+                              min="0"
+                              required
+                              class="w-16 rounded-lg border border-white/20 bg-white/10 px-2 py-1 text-center text-white focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                            />
+                          </div>
+                          <span class="pb-1.5">:</span>
+                          <div>
+                            <label for={`actual-away-${match.id}`} class="mb-1 block text-xs text-blue-100/70">
+                              {match.away_team}
+                            </label>
+                            <input
+                              id={`actual-away-${match.id}`}
+                              name="actual_away_score"
+                              type="number"
+                              min="0"
+                              required
+                              class="w-16 rounded-lg border border-white/20 bg-white/10 px-2 py-1 text-center text-white focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            class="rounded-lg bg-purple-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-purple-500"
                           >
-                            <div>
-                              <label for={`actual-home-${match.id}`} class="mb-1 block text-xs text-blue-100/70">
-                                {match.home_team}
-                              </label>
-                              <input
-                                id={`actual-home-${match.id}`}
-                                name="actual_home_score"
-                                type="number"
-                                min="0"
-                                required
-                                class="w-16 rounded-lg border border-white/20 bg-white/10 px-2 py-1 text-center text-white focus:ring-2 focus:ring-purple-400 focus:outline-none"
-                              />
-                            </div>
-                            <span class="pb-1.5">:</span>
-                            <div>
-                              <label for={`actual-away-${match.id}`} class="mb-1 block text-xs text-blue-100/70">
-                                {match.away_team}
-                              </label>
-                              <input
-                                id={`actual-away-${match.id}`}
-                                name="actual_away_score"
-                                type="number"
-                                min="0"
-                                required
-                                class="w-16 rounded-lg border border-white/20 bg-white/10 px-2 py-1 text-center text-white focus:ring-2 focus:ring-purple-400 focus:outline-none"
-                              />
-                            </div>
-                            <button
-                              type="submit"
-                              class="rounded-lg bg-purple-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-purple-500"
-                            >
-                              Zapisz wynik
-                            </button>
-                          </form>
-                        )
+                            Zapisz wynik
+                          </button>
+                        </form>
                       )}
                       {canDelete && (
                         <form
