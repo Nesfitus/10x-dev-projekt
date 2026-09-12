@@ -42,7 +42,7 @@ Pracownicy biura, którzy dziś ręcznie typują wyniki sportowe i liczą punkty
 | ID   | Change ID                             | Outcome (user can …)                                                          | Prerequisites | PRD refs             | Status   |
 | ---- | -------------------------------------- | ------------------------------------------------------------------------------ | -------------- | --------------------- | -------- |
 | F-01 | role-based-access-foundation           | (foundation) role Admin/User rozróżnialne w sesji; kontrola dostępu wg roli    | —              | FR-001                | in-progress |
-| S-01 | admin-creates-tournament                | Admin może założyć nowy turniej                                              | F-01            | FR-004                | in-progress |
+| S-01 | admin-creates-tournament                | Admin może założyć nowy turniej                                              | F-01            | FR-004                | done |
 | S-02 | admin-manages-users                     | Admin może dodać konta Userów do systemu (bez samorejestracji)                | F-01            | FR-002, FR-003        | in-progress |
 | S-03 | admin-adds-matches                      | Admin może dodać spotkania do turnieju z terminem                             | S-01, F-01      | FR-005                | in-progress |
 | S-04 | user-submits-prediction                 | User może wytypować wynik spotkania do jego rozpoczęcia                       | S-02, S-03, F-01 | US-01, FR-006         | in-progress |
@@ -98,7 +98,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Najprostszy możliwy punkt startowy po F-01 — tworzy wyłącznie rekord turnieju, zero zależności od innych danych domenowych; ryzyko niskie.
-- **Status:** in-progress
+- **Status:** done
 
 ### S-02: Admin zarządza użytkownikami (bez samorejestracji)
 
@@ -204,3 +204,5 @@ Foundations below assume these are present and do NOT re-scaffold them.
 ## Milestone History
 
 ## Done
+
+- **S-01: Admin może założyć nowy turniej (jeden aktywny naraz, kolejne niezależnie przechowywane).** — Archived 2026-09-12 → `context/archive/2026-09-11-admin-creates-tournament/`. Lesson: —.

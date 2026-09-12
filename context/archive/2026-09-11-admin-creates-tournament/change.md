@@ -1,9 +1,10 @@
 ---
 change_id: admin-creates-tournament
 title: "Admin zakłada nowy turniej"
-status: impl_reviewed
+status: archived
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-12
+archived_at: 2026-09-12T21:52:12Z
 roadmap_id: S-01
 ---
 
