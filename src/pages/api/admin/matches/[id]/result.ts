@@ -99,16 +99,28 @@ export const POST: APIRoute = async (context) => {
   }
 
   if (predictions && predictions.length > 0) {
-    const scored = predictions.map((prediction) => ({
-      ...prediction,
-      points: calculatePoints(
-        prediction.predicted_home_score,
-        prediction.predicted_away_score,
-        actual_home_score,
-        actual_away_score,
+    // Plain update by id, not upsert — every row here already exists (we
+    // only score existing predictions, never create new ones). Postgres
+    // RLS checks the INSERT policy for an upsert's proposed row even when
+    // it will always hit the ON CONFLICT branch; Admin only has an UPDATE
+    // policy on predictions, so upsert was rejected by RLS despite the
+    // match's own update succeeding.
+    const results = await Promise.all(
+      predictions.map((prediction) =>
+        supabase
+          .from("predictions")
+          .update({
+            points: calculatePoints(
+              prediction.predicted_home_score,
+              prediction.predicted_away_score,
+              actual_home_score,
+              actual_away_score,
+            ),
+          })
+          .eq("id", prediction.id),
       ),
-    }));
-    const { error: scoringError } = await supabase.from("predictions").upsert(scored, { onConflict: "id" });
+    );
+    const scoringError = results.find((result) => result.error)?.error;
     if (scoringError) {
       return context.redirect(errorRedirectUrl("Nie udało się zapisać wyniku"));
     }
