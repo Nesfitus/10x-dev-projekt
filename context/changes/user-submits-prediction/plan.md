@@ -206,21 +206,21 @@ Nowa tabela, brak istniejących danych do migrowania. Nowe polityki SELECT na `t
 
 #### Automated
 
-- [ ] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`)
-- [ ] 1.2 Type-check + build przechodzą (`npm run build`)
+- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`) — 99fb4c1
+- [x] 1.2 Type-check + build przechodzą (`npm run build`) — 99fb4c1
 
 #### Manual
 
-- [ ] 1.3 Tabela `predictions` widoczna w Supabase Studio z poprawnymi kolumnami, FK, unikalnym ograniczeniem, RLS włączone
-- [ ] 1.4 Testowe konto User widzi wiersze `tournaments`/`matches` (wcześniej zero)
-- [ ] 1.5 Insert do `predictions` dla meczu przeszłego/zamkniętego turnieju odrzucony przez RLS
+- [x] 1.3 Tabela `predictions` widoczna w Supabase Studio z poprawnymi kolumnami, FK, unikalnym ograniczeniem, RLS włączone — 99fb4c1
+- [x] 1.4 Testowe konto User widzi wiersze `tournaments`/`matches` (wcześniej zero) — 99fb4c1
+- [x] 1.5 Insert do `predictions` dla meczu przeszłego/zamkniętego turnieju odrzucony przez RLS — 99fb4c1
 
 ### Phase 2: Endpoint API — zapisanie/aktualizacja typu
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi (`npm run lint`)
-- [ ] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`)
+- [x] 2.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
@@ -234,8 +234,8 @@ Nowa tabela, brak istniejących danych do migrowania. Nowe polityki SELECT na `t
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi (`npm run lint`)
-- [ ] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`)
+- [x] 3.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
