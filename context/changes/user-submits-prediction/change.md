@@ -1,7 +1,7 @@
 ---
 change_id: user-submits-prediction
 title: "User typuje wynik spotkania"
-status: implementing
+status: implemented
 created: 2026-09-12
 updated: 2026-09-12
 roadmap_id: S-04

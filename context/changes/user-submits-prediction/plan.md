@@ -219,28 +219,28 @@ Nowa tabela, brak istniejących danych do migrowania. Nowe polityki SELECT na `t
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi (`npm run lint`)
-- [x] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`) — 90099aa
+- [x] 2.2 Type-check + build przechodzą (`npm run build`) — 90099aa
 
 #### Manual
 
-- [ ] 2.3 Poprawny POST zapisuje typ; ponowny POST nadpisuje (upsert, brak duplikatu)
-- [ ] 2.4 POST z nieprawidłową wartością zwraca czytelny błąd walidacji
-- [ ] 2.5 POST dla zamkniętego turnieju zwraca błąd, brak zapisu
-- [ ] 2.6 POST dla meczu przeszłego zwraca błąd, brak zapisu
-- [ ] 2.7 Bezpośredni POST jako Admin zwraca 403
+- [x] 2.3 Poprawny POST zapisuje typ; ponowny POST nadpisuje (upsert, brak duplikatu) — 90099aa
+- [x] 2.4 POST z nieprawidłową wartością zwraca czytelny błąd walidacji — 90099aa
+- [x] 2.5 POST dla zamkniętego turnieju zwraca błąd, brak zapisu — 90099aa
+- [x] 2.6 POST dla meczu przeszłego zwraca błąd, brak zapisu — 90099aa
+- [x] 2.7 Bezpośredni POST jako Admin zwraca 403 — 90099aa
 
 ### Phase 3: UI — `/dashboard` jako widok turniejów i typowania
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi (`npm run lint`)
-- [x] 3.2 Type-check + build przechodzą (`npm run build`)
+- [x] 3.1 Lint przechodzi (`npm run lint`) — 90099aa
+- [x] 3.2 Type-check + build przechodzą (`npm run build`) — 90099aa
 
 #### Manual
 
-- [ ] 3.3 `/dashboard` pokazuje wszystkie turnieje z posortowanymi spotkaniami
-- [ ] 3.4 Formularz widoczny i działający dla meczu przyszłego w aktywnym turnieju
-- [ ] 3.5 Odczyt (bez formularza) dla meczu rozpoczętego lub turnieju zamkniętego
-- [ ] 3.6 Puste stany ("Brak spotkań"/"Brak turniejów") poprawne
-- [ ] 3.7 Admin widzi dane tylko-do-odczytu, bez formularza
+- [x] 3.3 `/dashboard` pokazuje wszystkie turnieje z posortowanymi spotkaniami — 90099aa
+- [x] 3.4 Formularz widoczny i działający dla meczu przyszłego w aktywnym turnieju — 90099aa
+- [x] 3.5 Odczyt (bez formularza) dla meczu rozpoczętego lub turnieju zamkniętego — 90099aa
+- [x] 3.6 Puste stany ("Brak spotkań"/"Brak turniejów") poprawne — 90099aa
+- [x] 3.7 Admin widzi dane tylko-do-odczytu, bez formularza — 90099aa
