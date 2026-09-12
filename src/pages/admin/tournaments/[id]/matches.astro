@@ -127,7 +127,10 @@ function formatScheduledAt(iso: string) {
                 {matches.map((match) => {
                   const canDelete = new Date(match.scheduled_at) > now;
                   const hasResult = match.actual_home_score !== null;
-                  const canEnterResult = !hasResult && new Date(match.scheduled_at) <= now;
+                  // Written as `now >= ...` (not `<=`) to avoid a bare `<`
+                  // in this template expression — Astro's compiler misreads
+                  // `<=` here as the start of a JSX tag.
+                  const canEnterResult = !hasResult && now >= new Date(match.scheduled_at);
                   return (
                     <li class="rounded-lg border border-white/10 bg-white/5 p-4">
                       <div class="flex items-center justify-between">
