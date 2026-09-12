@@ -35,7 +35,7 @@ Astro 6 SSR app (React 19 islands, Tailwind 4, Supabase auth, shadcn/ui) deploye
 
 ## CI & Configuration
 
-- `.github/workflows/ci.yml` runs `lint` then `build` on push/PR to `master`; build needs `SUPABASE_URL`/`SUPABASE_KEY` as repo secrets.
+- `.github/workflows/ci.yml` runs `lint` then `build` on push/PR to `main`; build needs `SUPABASE_URL`/`SUPABASE_KEY` as repo secrets.
 - Local secrets: `.env` (Node) or `.dev.vars` (Cloudflare, gitignored) — copy from `.env.example`.
 - Node v22.14.0 (@.nvmrc). Local Supabase via `npx supabase start` (Docker required).
 - Deploy: `npx wrangler deploy` (requires Cloudflare account + `wrangler` auth); secrets go via `npx wrangler secret put` or the Cloudflare dashboard.
