@@ -1,9 +1,10 @@
 ---
 change_id: admin-manages-users
 title: "Admin zarządza użytkownikami (bez samorejestracji)"
-status: impl_reviewed
+status: archived
 created: 2026-09-11
 updated: 2026-09-12
+archived_at: 2026-09-12T21:55:38Z
 roadmap_id: S-02
 ---
 

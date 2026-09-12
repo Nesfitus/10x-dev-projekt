@@ -43,7 +43,7 @@ Pracownicy biura, którzy dziś ręcznie typują wyniki sportowe i liczą punkty
 | ---- | -------------------------------------- | ------------------------------------------------------------------------------ | -------------- | --------------------- | -------- |
 | F-01 | role-based-access-foundation           | (foundation) role Admin/User rozróżnialne w sesji; kontrola dostępu wg roli    | —              | FR-001                | in-progress |
 | S-01 | admin-creates-tournament                | Admin może założyć nowy turniej                                              | F-01            | FR-004                | done |
-| S-02 | admin-manages-users                     | Admin może dodać konta Userów do systemu (bez samorejestracji)                | F-01            | FR-002, FR-003        | in-progress |
+| S-02 | admin-manages-users                     | Admin może dodać konta Userów do systemu (bez samorejestracji)                | F-01            | FR-002, FR-003        | done |
 | S-03 | admin-adds-matches                      | Admin może dodać spotkania do turnieju z terminem                             | S-01, F-01      | FR-005                | in-progress |
 | S-04 | user-submits-prediction                 | User może wytypować wynik spotkania do jego rozpoczęcia                       | S-02, S-03, F-01 | US-01, FR-006         | in-progress |
 | S-05 | admin-enters-result-auto-scoring        | Admin wprowadza faktyczny wynik; system automatycznie nalicza punkty Userowi   | S-04, F-01      | US-01, FR-007, FR-008 | proposed |
@@ -111,7 +111,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Unknowns:**
   - Istniejący w starterze publiczny flow samorejestracji (`src/pages/api/auth/signup.ts`, `src/pages/auth/signup.astro`) koliduje z FR-002/FR-003 (brak samorejestracji — konta zakłada wyłącznie Admin). Czy tę ścieżkę należy usunąć, czy przerobić na akcję "Admin dodaje Usera"? — Owner: user. Block: no (decyzja implementacyjna dla `/10x-plan`, docelowy model dostępu jest już jednoznaczny).
 - **Risk:** Koliduje z istniejącym publicznym flow rejestracji w starterze (patrz Unknowns) — trzeba świadomie zamknąć/przerobić self-signup, inaczej model dostępu z PRD zostanie naruszony.
-- **Status:** in-progress
+- **Status:** done
 
 ### S-03: Admin dodaje spotkania do turnieju
 
@@ -206,3 +206,4 @@ Foundations below assume these are present and do NOT re-scaffold them.
 ## Done
 
 - **S-01: Admin może założyć nowy turniej (jeden aktywny naraz, kolejne niezależnie przechowywane).** — Archived 2026-09-12 → `context/archive/2026-09-11-admin-creates-tournament/`. Lesson: —.
+- **S-02: Admin może dodać konto Usera do systemu; nie istnieje żadna ścieżka samodzielnej rejestracji dla Usera ani Admina.** — Archived 2026-09-12 → `context/archive/2026-09-11-admin-manages-users/`. Lesson: —.
