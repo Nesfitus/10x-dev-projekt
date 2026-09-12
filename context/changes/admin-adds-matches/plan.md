@@ -263,5 +263,5 @@ Nowa tabela, brak istniejących danych do migrowania. `on delete cascade` na `to
 - [x] 3.4 Dodanie spotkania przez formularz pokazuje nowy wiersz, poprawnie posortowany — 1a29f17
 - [x] 3.5 Turniej `closed` nie pokazuje formularza, tylko komunikat — 1a29f17
 - [x] 3.6 Przycisk "Usuń" widoczny tylko dla spotkań z terminem w przyszłości — 1a29f17
-- [x] 3.7 Nieistniejące `id` turnieju przekierowuje na `/admin/tournaments` — 1a29f17
+- [x] 3.7 Nieistniejące `id` turnieju pokazuje inline komunikat błędu "Nie znaleziono turnieju" (bez przekierowania) — 1a29f17
 - [x] 3.8 User przekierowany na `/dashboard` z dowolnej strony spotkań — 1a29f17
