@@ -14,7 +14,9 @@ beforeAll(async () => {
 // Kolejność: mecze/predykcje przed userem — auth.users nie ma ON DELETE CASCADE
 // z matches.created_by / predictions.user_id (patrz plan.md).
 afterAll(async () => {
-  await deleteTestUser(adminClient, userId);
+  if (userId) {
+    await deleteTestUser(adminClient, userId);
+  }
 });
 
 describe("integration test harness (smoke)", () => {

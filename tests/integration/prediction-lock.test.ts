@@ -13,9 +13,19 @@ const authedClientHolder = vi.hoisted(() => ({ current: null as AuthedClient | n
 
 // Podmieniamy wyłącznie transport uwierzytelniania (cookie-based SSR,
 // specyficzny dla Astro) — reszta logiki endpointu (zod, sprawdzenie
-// scheduled_at, wywołanie RLS) pozostaje realna.
+// scheduled_at, wywołanie RLS) pozostaje realna. Asercja argumentów pilnuje,
+// żeby endpoint nadal realnie przekazywał headers/cookies do createClient —
+// inaczej ta podmiana ukryłaby regresję w samym wiringu.
 vi.mock("@/lib/supabase", () => ({
-  createClient: () => authedClientHolder.current,
+  createClient: (headers: unknown, cookies: unknown) => {
+    if (!(headers instanceof Headers)) {
+      throw new Error("predictions.ts nie przekazał realnego obiektu Headers do createClient().");
+    }
+    if (typeof (cookies as { set?: unknown } | null)?.set !== "function") {
+      throw new Error("predictions.ts nie przekazał obiektu cookies z metodą set() do createClient().");
+    }
+    return authedClientHolder.current;
+  },
 }));
 
 const { POST } = await import("@/pages/api/matches/[id]/predictions");
@@ -56,7 +66,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await deleteTestUser(adminClient, userId);
+  if (userId) {
+    await deleteTestUser(adminClient, userId);
+  }
 });
 
 describe("blokada czasowa typowania (#2)", () => {

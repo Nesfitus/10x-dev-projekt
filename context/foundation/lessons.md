@@ -9,6 +9,13 @@
 - **Rule**: Nie dodawaj `try/catch` wokół zwykłych wywołań `supabase.from()`/`.rpc()` tylko po to, by "obsłużyć wyjątek" — sprawdzaj `data`/`error` przez istniejący wzorzec fallbacków (`?? null`, `?? []`), nie przez blok `try/catch`. Jeśli przyszły review ponownie to zgłosi, odwołaj się do tej zasady zamiast dodawać martwy kod obronny.
 - **Applies to**: implement, impl-review
 
+## Mockowanie transportu w testach integracyjnych nie weryfikuje samego wiring'u
+
+- **Context**: `tests/integration/prediction-lock.test.ts:13-18` (mock `@/lib/supabase` `createClient`).
+- **Problem**: Gdy test integracyjny mockuje warstwę transportu (np. `createClient(headers, cookies)`), żeby zastąpić Astro-specyficzny SSR/cookie plumbing realnym klientem uwierzytelnionym inaczej, mock zwykle ignoruje argumenty przekazane przez testowany kod. To celowe uproszczenie (test i tak weryfikuje realną logikę biznesową + RLS), ale oznacza, że test nie złapie regresji w samym wywołaniu (np. przypadkowe `createClient(undefined, cookies)` w endpointcie) — mock i tak zwróci działającego klienta.
+- **Rule**: _(do uzupełnienia)_
+- **Applies to**: _(do uzupełnienia)_
+
 ## Use GitHub Copilot in VS Code for this project
 
 - **Context**: w ramach pracy z tym projektem

@@ -29,6 +29,10 @@ export async function createTestUser(adminClient: SupabaseClient): Promise<TestU
   const anonClient = createClient(url, anonKey, { auth: { autoRefreshToken: false, persistSession: false } });
   const { data: session, error: signInError } = await anonClient.auth.signInWithPassword({ email, password });
   if (signInError) {
+    // Rollback: bez tego nieudane logowanie zostawiłoby osierocone konto w
+    // auth.users na zawsze (afterAll nigdy nie wywoła deleteTestUser, bo
+    // userId nie zostanie przypisany po rzuceniu tego błędu).
+    await adminClient.auth.admin.deleteUser(created.user.id);
     throw new Error(`Nie udało się zalogować testowego Usera: ${signInError.message}`);
   }
 

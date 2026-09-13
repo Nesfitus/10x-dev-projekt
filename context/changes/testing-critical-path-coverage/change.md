@@ -1,7 +1,7 @@
 ---
 change_id: testing-critical-path-coverage
 title: Critical-path coverage: scoring rule (3/1/0) and match-lock timing tests
-status: implemented
+status: impl_reviewed
 created: 2026-09-13
 updated: 2026-09-13
 archived_at: null

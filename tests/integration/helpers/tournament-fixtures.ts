@@ -18,7 +18,7 @@ async function getActiveTournamentId(adminClient: SupabaseClient): Promise<strin
     .single<{ id: string }>();
   if (error) {
     throw new Error(
-      "Brak aktywnego turnieju w docelowym projekcie Supabase — testy integracyjne wymagają istniejącego aktywnego turnieju.",
+      `Brak aktywnego turnieju w docelowym projekcie Supabase (lub błąd zapytania: ${error.message}) — testy integracyjne wymagają istniejącego aktywnego turnieju.`,
     );
   }
   return data.id;
