@@ -10,6 +10,9 @@ const { user } = Astro.locals;
       <>
         <span class="text-blue-100/70">{user.email}</span>
         <div class="flex items-center gap-3">
+          <a href="/admin" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
+            Admin
+          </a>
           <a href="/dashboard" class="text-purple-300 transition-colors hover:text-purple-100 hover:underline">
             Dashboard
           </a>
