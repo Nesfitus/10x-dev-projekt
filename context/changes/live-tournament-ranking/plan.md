@@ -235,15 +235,15 @@ Migracja jest addytywna (nowa funkcja, brak zmian w istniejących tabelach/kolum
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi (`npm run lint`)
-- [x] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`) — 358bbc2
+- [x] 2.2 Type-check + build przechodzą (`npm run build`) — 358bbc2
 
 #### Manual
 
-- [x] 2.3 Link z `/dashboard` prowadzi do poprawnego rankingu, własny wiersz wyróżniony
-- [x] 2.4 Link z `/admin/tournaments` prowadzi do tej samej strony z tymi samymi danymi
-- [x] 2.5 User bez typów widnieje z 0 pkt
-- [x] 2.6 Ranking działa identycznie dla turnieju `active` i `closed`
-- [x] 2.7 Nieistniejący `id` turnieju pokazuje stan "nie znaleziono", bez błędu 500
-- [x] 2.8 Brak sesji → przekierowanie na `/auth/signin`
-- [x] 2.9 Remis punktowy sortowany alfabetycznie po e-mailu
+- [x] 2.3 Link z `/dashboard` prowadzi do poprawnego rankingu, własny wiersz wyróżniony — 358bbc2
+- [x] 2.4 Link z `/admin/tournaments` prowadzi do tej samej strony z tymi samymi danymi — 358bbc2
+- [x] 2.5 User bez typów widnieje z 0 pkt — 358bbc2
+- [x] 2.6 Ranking działa identycznie dla turnieju `active` i `closed` — 358bbc2
+- [x] 2.7 Nieistniejący `id` turnieju pokazuje stan "nie znaleziono", bez błędu 500 — 358bbc2
+- [x] 2.8 Brak sesji → przekierowanie na `/auth/signin` — 358bbc2
+- [x] 2.9 Remis punktowy sortowany alfabetycznie po e-mailu — 358bbc2
