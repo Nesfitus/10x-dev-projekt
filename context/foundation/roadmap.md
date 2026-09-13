@@ -48,7 +48,7 @@ Pracownicy biura, którzy dziś ręcznie typują wyniki sportowe i liczą punkty
 | S-04 | user-submits-prediction                 | User może wytypować wynik spotkania do jego rozpoczęcia                       | S-02, S-03, F-01 | US-01, FR-006         | in-progress |
 | S-05 | admin-enters-result-auto-scoring        | Admin wprowadza faktyczny wynik; system automatycznie nalicza punkty Userowi   | S-04, F-01      | US-01, FR-007, FR-008 | in-progress |
 | S-06 | live-tournament-ranking                 | User widzi pełny, bieżący ranking turnieju                                   | S-05            | FR-010                | in-progress |
-| S-07 | admin-closes-tournament-and-winners     | Admin jawnie zamyka turniej; system wyłania zwycięzców (dopuszczalny remis)   | S-06, F-01      | FR-009, FR-011        | proposed |
+| S-07 | admin-closes-tournament-and-winners     | Admin jawnie zamyka turniej; system wyłania zwycięzców (dopuszczalny remis)   | S-06, F-01      | FR-009, FR-011        | in-progress |
 
 ## Streams
 
@@ -171,7 +171,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Ostatni krok w łańcuchu — musi poprawnie obsłużyć remisy (ex aequo, zgodnie z rundą Sokratesa w PRD) i być wyzwalany wyłącznie jawną akcją Admina, nie automatycznie.
-- **Status:** proposed
+- **Status:** in-progress
 
 ## Backlog Handoff
 
