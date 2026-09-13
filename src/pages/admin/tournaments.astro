@@ -7,6 +7,7 @@ const error = Astro.url.searchParams.get("error");
 
 const supabase = createClient(Astro.request.headers, Astro.cookies);
 let tournaments: Tournament[] = [];
+const unplayedMatchesByTournament = new Map<string, number>();
 
 if (supabase) {
   const { data } = await supabase
@@ -15,6 +16,24 @@ if (supabase) {
     .order("created_at", { ascending: false })
     .overrideTypes<Tournament[], { merge: false }>();
   tournaments = data ?? [];
+
+  const tournamentIds = tournaments.map((t) => t.id);
+  if (tournamentIds.length > 0) {
+    const { data: matchData } = await supabase
+      .from("matches")
+      .select("tournament_id, actual_home_score")
+      .in("tournament_id", tournamentIds)
+      .overrideTypes<{ tournament_id: string; actual_home_score: number | null }[], { merge: false }>();
+
+    for (const match of matchData ?? []) {
+      if (match.actual_home_score === null) {
+        unplayedMatchesByTournament.set(
+          match.tournament_id,
+          (unplayedMatchesByTournament.get(match.tournament_id) ?? 0) + 1,
+        );
+      }
+    }
+  }
 }
 ---
 
@@ -90,6 +109,26 @@ if (supabase) {
                 >
                   Ranking
                 </a>
+                {tournament.status === "active" && (
+                  <form
+                    method="POST"
+                    action={`/api/admin/tournaments/${tournament.id}/close`}
+                    class="mt-3 ml-2 inline-block"
+                    onsubmit="return confirm('Na pewno zamknąć ten turniej? Tej operacji nie można cofnąć.')"
+                  >
+                    <button
+                      type="submit"
+                      class="rounded-lg border border-amber-400/40 bg-amber-900/20 px-3 py-1 text-xs text-amber-300 transition-colors hover:bg-amber-900/40"
+                    >
+                      Zamknij turniej
+                    </button>
+                    {(unplayedMatchesByTournament.get(tournament.id) ?? 0) > 0 && (
+                      <span class="ml-2 text-xs text-amber-200/70">
+                        {unplayedMatchesByTournament.get(tournament.id)} mecz(e/ów) bez wyniku
+                      </span>
+                    )}
+                  </form>
+                )}
               </li>
             ))}
           </ul>

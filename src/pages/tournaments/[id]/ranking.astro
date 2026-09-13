@@ -30,6 +30,13 @@ if (supabase) {
 }
 
 const backHref = role === "admin" ? "/admin/tournaments" : "/dashboard";
+
+// tournament_ranking() already sorts DESC by points — the first row (if any)
+// carries the maximum; every row tied with it is a winner (ex aequo allowed,
+// including an all-zero tie for a tournament with no scored predictions).
+const maxPoints = ranking.length > 0 ? ranking[0].points : null;
+const winners = tournament?.status === "closed" && maxPoints !== null ? ranking.filter((row) => row.points === maxPoints) : [];
+const winnerIds = new Set(winners.map((row) => row.user_id));
 ---
 
 <Layout title={tournament ? `Ranking — ${tournament.name}` : "Ranking"}>
@@ -53,6 +60,13 @@ const backHref = role === "admin" ? "/admin/tournaments" : "/dashboard";
             </h1>
             <p class="mb-6 text-xs text-blue-100/50 uppercase">{tournament.status}</p>
 
+            {winners.length > 0 && (
+              <p class="mb-4 rounded-lg border border-amber-400/40 bg-amber-900/20 px-3 py-2 text-sm text-amber-200">
+                🏆 Zwycięzca{winners.length > 1 ? "y" : ""}:{" "}
+                {winners.map((row) => row.email ?? row.user_id).join(", ")} ({maxPoints} pkt)
+              </p>
+            )}
+
             {ranking.length === 0 ? (
               <p class="text-blue-100/50">Brak uczestników</p>
             ) : (
@@ -68,7 +82,10 @@ const backHref = role === "admin" ? "/admin/tournaments" : "/dashboard";
                   >
                     <span class="flex items-center gap-3">
                       <span class="text-xs text-blue-100/50">{index + 1}.</span>
-                      <span>{row.email ?? row.user_id}</span>
+                      <span>
+                        {row.email ?? row.user_id}
+                        {winnerIds.has(row.user_id) ? " 🏆" : ""}
+                      </span>
                     </span>
                     <span class="font-semibold">{row.points} pkt</span>
                   </li>

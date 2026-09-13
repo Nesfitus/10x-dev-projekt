@@ -203,19 +203,19 @@ Migracja jest addytywna (nowa polityka RLS, brak zmian w kolumnach/danych) — b
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`)
-- [x] 1.2 Type-check przechodzi
+- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`) — cb36c7c
+- [x] 1.2 Type-check przechodzi — cb36c7c
 
 #### Manual
 
-- [x] 1.3 Admin może zaktualizować `tournaments.status`; User nie może (RLS blokuje)
+- [x] 1.3 Admin może zaktualizować `tournaments.status`; User nie może (RLS blokuje) — cb36c7c
 
 ### Phase 2: Endpoint API — zamknięcie turnieju
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi (`npm run lint`)
-- [ ] 2.2 Type-check przechodzi
+- [x] 2.1 Lint przechodzi (`npm run lint`)
+- [x] 2.2 Type-check przechodzi
 
 #### Manual
 
@@ -228,8 +228,8 @@ Migracja jest addytywna (nowa polityka RLS, brak zmian w kolumnach/danych) — b
 
 #### Automated
 
-- [ ] 3.1 Lint przechodzi (`npm run lint`)
-- [ ] 3.2 Type-check przechodzi
+- [x] 3.1 Lint przechodzi (`npm run lint`)
+- [x] 3.2 Type-check przechodzi
 
 #### Manual
 
