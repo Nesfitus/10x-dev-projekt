@@ -270,21 +270,21 @@ Brak zmian schematu/migracji w tej fazie.
 
 #### Automated
 
-- [x] 2.1 `npm run lint` przechodzi dla nowych plików w `tests/integration/helpers/`
-- [x] 2.2 `npm run test:integration` przechodzi dla testu dymnego harnessu
+- [x] 2.1 `npm run lint` przechodzi dla nowych plików w `tests/integration/helpers/` — b733e75
+- [x] 2.2 `npm run test:integration` przechodzi dla testu dymnego harnessu — b733e75
 
 #### Manual
 
-- [x] 2.3 Brak śladu testowego Usera/turnieju w Supabase dashboardzie po teście dymnym
+- [x] 2.3 Brak śladu testowego Usera/turnieju w Supabase dashboardzie po teście dymnym — b733e75
 
 ### Phase 3: Integration tests for match-lock timing (#2)
 
 #### Automated
 
-- [ ] 3.1 `npm run test:integration` przechodzi dla wszystkich przypadków `prediction-lock.test.ts`
-- [ ] 3.2 `npm run lint` przechodzi
+- [x] 3.1 `npm run test:integration` przechodzi dla wszystkich przypadków `prediction-lock.test.ts`
+- [x] 3.2 `npm run lint` przechodzi
 
 #### Manual
 
-- [ ] 3.3 Brak osieroconych rekordów/kont testowych w Supabase po przebiegu
-- [ ] 3.4 Brak wpływu na regułę "jeden aktywny turniej naraz" po testach
+- [x] 3.3 Brak osieroconych rekordów/kont testowych w Supabase po przebiegu
+- [x] 3.4 Brak wpływu na regułę "jeden aktywny turniej naraz" po testach
