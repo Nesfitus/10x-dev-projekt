@@ -93,6 +93,12 @@ function formatScheduledAt(iso: string) {
                     <h2 class="text-lg font-semibold">{tournament.name}</h2>
                     <span class="text-xs text-blue-100/50 uppercase">{tournament.status}</span>
                   </div>
+                  <a
+                    href={`/tournaments/${tournament.id}/ranking`}
+                    class="mb-3 inline-block rounded-lg border border-white/20 bg-white/10 px-3 py-1 text-xs transition-colors hover:bg-white/20"
+                  >
+                    Ranking
+                  </a>
                   {matches.length === 0 ? (
                     <p class="text-sm text-blue-100/60">Brak spotkań</p>
                   ) : (

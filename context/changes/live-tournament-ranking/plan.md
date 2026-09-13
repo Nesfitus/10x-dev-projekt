@@ -221,29 +221,29 @@ Migracja jest addytywna (nowa funkcja, brak zmian w istniejących tabelach/kolum
 
 #### Automated
 
-- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`)
-- [x] 1.2 Type-check + build przechodzą (`npm run build`)
+- [x] 1.1 Migracja aplikuje się czysto (`npx supabase db push`, `npx supabase migration list`) — 46787d7
+- [x] 1.2 Type-check + build przechodzą (`npm run build`) — 46787d7
 
 #### Manual
 
-- [x] 1.3 SQL Editor: pełny ranking zwraca wszystkich aktywnych Userów, w tym bez typów (0 pkt)
-- [x] 1.4 Zwykła sesja Usera przez `.rpc()` dostaje ten sam pełny wynik
-- [x] 1.5 Dezaktywowany User nie pojawia się w wyniku
-- [x] 1.6 Nieistniejący `tournament_id` zwraca pełną listę z 0 pkt, bez błędu
+- [x] 1.3 SQL Editor: pełny ranking zwraca wszystkich aktywnych Userów, w tym bez typów (0 pkt) — 46787d7
+- [x] 1.4 Zwykła sesja Usera przez `.rpc()` dostaje ten sam pełny wynik — 46787d7
+- [x] 1.5 Dezaktywowany User nie pojawia się w wyniku — 46787d7
+- [x] 1.6 Nieistniejący `tournament_id` zwraca pełną listę z 0 pkt, bez błędu — 46787d7
 
 ### Phase 2: Strona rankingu i nawigacja
 
 #### Automated
 
-- [ ] 2.1 Lint przechodzi (`npm run lint`)
-- [ ] 2.2 Type-check + build przechodzą (`npm run build`)
+- [x] 2.1 Lint przechodzi (`npm run lint`)
+- [x] 2.2 Type-check + build przechodzą (`npm run build`)
 
 #### Manual
 
-- [ ] 2.3 Link z `/dashboard` prowadzi do poprawnego rankingu, własny wiersz wyróżniony
-- [ ] 2.4 Link z `/admin/tournaments` prowadzi do tej samej strony z tymi samymi danymi
-- [ ] 2.5 User bez typów widnieje z 0 pkt
-- [ ] 2.6 Ranking działa identycznie dla turnieju `active` i `closed`
-- [ ] 2.7 Nieistniejący `id` turnieju pokazuje stan "nie znaleziono", bez błędu 500
-- [ ] 2.8 Brak sesji → przekierowanie na `/auth/signin`
-- [ ] 2.9 Remis punktowy sortowany alfabetycznie po e-mailu
+- [x] 2.3 Link z `/dashboard` prowadzi do poprawnego rankingu, własny wiersz wyróżniony
+- [x] 2.4 Link z `/admin/tournaments` prowadzi do tej samej strony z tymi samymi danymi
+- [x] 2.5 User bez typów widnieje z 0 pkt
+- [x] 2.6 Ranking działa identycznie dla turnieju `active` i `closed`
+- [x] 2.7 Nieistniejący `id` turnieju pokazuje stan "nie znaleziono", bez błędu 500
+- [x] 2.8 Brak sesji → przekierowanie na `/auth/signin`
+- [x] 2.9 Remis punktowy sortowany alfabetycznie po e-mailu

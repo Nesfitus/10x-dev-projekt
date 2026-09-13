@@ -1,0 +1,87 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { createClient } from "@/lib/supabase";
+import { cn } from "@/lib/utils";
+import type { RankingRow, Tournament } from "@/types";
+
+const { id } = Astro.params;
+const { user, role } = Astro.locals;
+
+const supabase = createClient(Astro.request.headers, Astro.cookies);
+
+// No early `return` here: a top-level `return` in an Astro frontmatter
+// script crashes this repo's ESLint (see admin/tournaments/[id]/matches.astro).
+// Missing tournament/Supabase config is rendered as an inline error state.
+let tournament: Tournament | null = null;
+let ranking: RankingRow[] = [];
+
+if (supabase) {
+  const { data } = await supabase.from("tournaments").select("*").eq("id", id).single<Tournament>();
+  tournament = data ?? null;
+
+  if (tournament) {
+    // SECURITY DEFINER RPC — returns every active User's total points for
+    // this tournament, including 0 for Users with no predictions at all.
+    const { data: rankingData } = await supabase
+      .rpc("tournament_ranking", { p_tournament_id: id })
+      .overrideTypes<RankingRow[], { merge: false }>();
+    ranking = rankingData ?? [];
+  }
+}
+
+const backHref = role === "admin" ? "/admin/tournaments" : "/dashboard";
+---
+
+<Layout title={tournament ? `Ranking — ${tournament.name}` : "Ranking"}>
+  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-white/10 p-8 text-white backdrop-blur-xl">
+      {
+        !tournament ? (
+          <Fragment>
+            <h1 class="mb-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-2xl font-bold text-transparent">
+              Nie znaleziono turnieju
+            </h1>
+            <p class="mb-6 text-sm text-blue-100/70">Turniej o podanym identyfikatorze nie istnieje.</p>
+            <a href={backHref} class="text-xs text-blue-100/60 hover:text-blue-100">
+              ← Wróć
+            </a>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <h1 class="mb-1 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-2xl font-bold text-transparent">
+              Ranking — {tournament.name}
+            </h1>
+            <p class="mb-6 text-xs text-blue-100/50 uppercase">{tournament.status}</p>
+
+            {ranking.length === 0 ? (
+              <p class="text-blue-100/50">Brak uczestników</p>
+            ) : (
+              <ol class="space-y-2">
+                {ranking.map((row, index) => (
+                  <li
+                    class={cn(
+                      "flex items-center justify-between rounded-lg border p-3",
+                      row.user_id === user?.id
+                        ? "border-purple-400/60 bg-purple-500/20"
+                        : "border-white/10 bg-white/5",
+                    )}
+                  >
+                    <span class="flex items-center gap-3">
+                      <span class="text-xs text-blue-100/50">{index + 1}.</span>
+                      <span>{row.email ?? row.user_id}</span>
+                    </span>
+                    <span class="font-semibold">{row.points} pkt</span>
+                  </li>
+                ))}
+              </ol>
+            )}
+
+            <a href={backHref} class="mt-6 inline-block text-xs text-blue-100/60 hover:text-blue-100">
+              ← Wróć
+            </a>
+          </Fragment>
+        )
+      }
+    </div>
+  </div>
+</Layout>
