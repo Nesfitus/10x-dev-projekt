@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase";
 import { requireRole } from "@/lib/auth";
+import { calculatePoints } from "@/lib/services/scoring";
 import type { TournamentStatus } from "@/types";
 
 export const prerender = false;
@@ -16,17 +17,6 @@ const resultSchema = z.object({
     .int("Wynik musi być liczbą całkowitą")
     .min(0, "Wynik nie może być ujemny"),
 });
-
-// 1 = home win, 0 = draw, -1 = away win — comparable between predicted and actual.
-function outcomeSign(home: number, away: number) {
-  return home > away ? 1 : home < away ? -1 : 0;
-}
-
-function calculatePoints(predictedHome: number, predictedAway: number, actualHome: number, actualAway: number) {
-  if (predictedHome === actualHome && predictedAway === actualAway) return 3;
-  if (outcomeSign(predictedHome, predictedAway) === outcomeSign(actualHome, actualAway)) return 1;
-  return 0;
-}
 
 export const POST: APIRoute = async (context) => {
   const denied = requireRole(context.locals, "admin");
