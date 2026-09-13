@@ -270,12 +270,12 @@ Brak zmian schematu/migracji w tej fazie.
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` przechodzi dla nowych plików w `tests/integration/helpers/`
-- [ ] 2.2 `npm run test:integration` przechodzi dla testu dymnego harnessu
+- [x] 2.1 `npm run lint` przechodzi dla nowych plików w `tests/integration/helpers/`
+- [x] 2.2 `npm run test:integration` przechodzi dla testu dymnego harnessu
 
 #### Manual
 
-- [ ] 2.3 Brak śladu testowego Usera/turnieju w Supabase dashboardzie po teście dymnym
+- [x] 2.3 Brak śladu testowego Usera/turnieju w Supabase dashboardzie po teście dymnym
 
 ### Phase 3: Integration tests for match-lock timing (#2)
 
