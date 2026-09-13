@@ -39,3 +39,9 @@ export interface Prediction {
   points: number | null;
   created_at: string;
 }
+
+export interface RankingRow {
+  user_id: string;
+  email: string | null;
+  points: number;
+}
