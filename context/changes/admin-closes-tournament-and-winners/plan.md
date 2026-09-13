@@ -219,10 +219,10 @@ Migracja jest addytywna (nowa polityka RLS, brak zmian w kolumnach/danych) — b
 
 #### Manual
 
-- [x] 2.3 Poprawny POST zamyka aktywny turniej i przekierowuje bez błędu
-- [x] 2.4 Drugi POST dla już zamkniętego turnieju zwraca błąd, status się nie zmienia
-- [x] 2.5 POST dla nieistniejącego turnieju zwraca błąd
-- [x] 2.6 Bezpośredni POST jako User zwraca 403
+- [x] 2.3 Poprawny POST zamyka aktywny turniej i przekierowuje bez błędu — 5f6d0cb
+- [x] 2.4 Drugi POST dla już zamkniętego turnieju zwraca błąd, status się nie zmienia — 5f6d0cb
+- [x] 2.5 POST dla nieistniejącego turnieju zwraca błąd — 5f6d0cb
+- [x] 2.6 Bezpośredni POST jako User zwraca 403 — 5f6d0cb
 
 ### Phase 3: UI — przycisk zamknięcia i wyróżnienie zwycięzców
 
@@ -233,9 +233,9 @@ Migracja jest addytywna (nowa polityka RLS, brak zmian w kolumnach/danych) — b
 
 #### Manual
 
-- [x] 3.3 Przycisk "Zamknij turniej" z poprawnym licznikiem; zamknięcie działa
-- [x] 3.4 Po zamknięciu przycisk znika z listy
-- [x] 3.5 Banner + oznaczenie 🏆 poprawne na stronie rankingu zamkniętego turnieju, w tym przy remisie
-- [x] 3.6 Maksimum 0 pkt nadal wyłania zwycięzców bez wyjątku
-- [x] 3.7 Aktywny turniej nie pokazuje bannera/oznaczeń
-- [x] 3.8 Anulowanie `confirm()` nie wysyła żądania
+- [x] 3.3 Przycisk "Zamknij turniej" z poprawnym licznikiem; zamknięcie działa — 5f6d0cb
+- [x] 3.4 Po zamknięciu przycisk znika z listy — 5f6d0cb
+- [x] 3.5 Banner + oznaczenie 🏆 poprawne na stronie rankingu zamkniętego turnieju, w tym przy remisie — 5f6d0cb
+- [x] 3.6 Maksimum 0 pkt nadal wyłania zwycięzców bez wyjątku — 5f6d0cb
+- [x] 3.7 Aktywny turniej nie pokazuje bannera/oznaczeń — 5f6d0cb
+- [x] 3.8 Anulowanie `confirm()` nie wysyła żądania — 5f6d0cb

@@ -1,7 +1,7 @@
 ---
 change_id: admin-closes-tournament-and-winners
 title: "Admin zamyka turniej, system wyłania zwycięzców"
-status: implementing
+status: implemented
 created: 2026-09-13
 updated: 2026-09-13
 roadmap_id: S-07
