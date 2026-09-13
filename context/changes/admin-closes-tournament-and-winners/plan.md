@@ -214,28 +214,28 @@ Migracja jest addytywna (nowa polityka RLS, brak zmian w kolumnach/danych) — b
 
 #### Automated
 
-- [x] 2.1 Lint przechodzi (`npm run lint`)
-- [x] 2.2 Type-check przechodzi
+- [x] 2.1 Lint przechodzi (`npm run lint`) — 1494859
+- [x] 2.2 Type-check przechodzi — 1494859
 
 #### Manual
 
-- [ ] 2.3 Poprawny POST zamyka aktywny turniej i przekierowuje bez błędu
-- [ ] 2.4 Drugi POST dla już zamkniętego turnieju zwraca błąd, status się nie zmienia
-- [ ] 2.5 POST dla nieistniejącego turnieju zwraca błąd
-- [ ] 2.6 Bezpośredni POST jako User zwraca 403
+- [x] 2.3 Poprawny POST zamyka aktywny turniej i przekierowuje bez błędu
+- [x] 2.4 Drugi POST dla już zamkniętego turnieju zwraca błąd, status się nie zmienia
+- [x] 2.5 POST dla nieistniejącego turnieju zwraca błąd
+- [x] 2.6 Bezpośredni POST jako User zwraca 403
 
 ### Phase 3: UI — przycisk zamknięcia i wyróżnienie zwycięzców
 
 #### Automated
 
-- [x] 3.1 Lint przechodzi (`npm run lint`)
-- [x] 3.2 Type-check przechodzi
+- [x] 3.1 Lint przechodzi (`npm run lint`) — 1494859
+- [x] 3.2 Type-check przechodzi — 1494859
 
 #### Manual
 
-- [ ] 3.3 Przycisk "Zamknij turniej" z poprawnym licznikiem; zamknięcie działa
-- [ ] 3.4 Po zamknięciu przycisk znika z listy
-- [ ] 3.5 Banner + oznaczenie 🏆 poprawne na stronie rankingu zamkniętego turnieju, w tym przy remisie
-- [ ] 3.6 Maksimum 0 pkt nadal wyłania zwycięzców bez wyjątku
-- [ ] 3.7 Aktywny turniej nie pokazuje bannera/oznaczeń
-- [ ] 3.8 Anulowanie `confirm()` nie wysyła żądania
+- [x] 3.3 Przycisk "Zamknij turniej" z poprawnym licznikiem; zamknięcie działa
+- [x] 3.4 Po zamknięciu przycisk znika z listy
+- [x] 3.5 Banner + oznaczenie 🏆 poprawne na stronie rankingu zamkniętego turnieju, w tym przy remisie
+- [x] 3.6 Maksimum 0 pkt nadal wyłania zwycięzców bez wyjątku
+- [x] 3.7 Aktywny turniej nie pokazuje bannera/oznaczeń
+- [x] 3.8 Anulowanie `confirm()` nie wysyła żądania
