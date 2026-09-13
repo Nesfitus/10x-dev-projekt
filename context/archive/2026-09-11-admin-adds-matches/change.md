@@ -1,10 +1,11 @@
 ---
 change_id: admin-adds-matches
 title: "Admin dodaje spotkania do turnieju"
-status: impl_reviewed
+status: archived
 created: 2026-09-11
-updated: 2026-09-12
+updated: 2026-09-13
 roadmap_id: S-03
+archived_at: 2026-09-13T13:23:13Z
 ---
 
 # Change: admin-adds-matches
