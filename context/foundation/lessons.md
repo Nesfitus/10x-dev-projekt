@@ -2,6 +2,13 @@
 
 > Append-only register of recurring rules and patterns. Re-read at start by /10x-frame, /10x-research, /10x-plan, /10x-plan-review, /10x-implement, /10x-impl-review.
 
+## supabase-js nie rzuca wyjątków dla błędów zapytań — try/catch niepotrzebny wokół .from()/.rpc()
+
+- **Context**: `src/pages/tournaments/[id]/ranking.astro` (i każda inna strona Astro lub endpoint API wywołujący `supabase.from()`/`.rpc()` w kodzie serwerowym).
+- **Problem**: Review implementacji (`/10x-impl-review`) oznaczył brak `try/catch` wokół wywołań Supabase jako WARNING (możliwy nieobsłużony wyjątek), ale `supabase-js` domyślnie NIE rzuca wyjątków dla błędów zapytania — zwraca `{ data: null, error }`. Istniejący w tym repo wzorzec (`?? null`, `?? []`, wczesny return na brak danych) już to pokrywa; brak `try/catch` jest spójny z resztą kodebase (`dashboard.astro`, `admin/tournaments/[id]/matches.astro`), nie regresją.
+- **Rule**: Nie dodawaj `try/catch` wokół zwykłych wywołań `supabase.from()`/`.rpc()` tylko po to, by "obsłużyć wyjątek" — sprawdzaj `data`/`error` przez istniejący wzorzec fallbacków (`?? null`, `?? []`), nie przez blok `try/catch`. Jeśli przyszły review ponownie to zgłosi, odwołaj się do tej zasady zamiast dodawać martwy kod obronny.
+- **Applies to**: implement, impl-review
+
 ## Use GitHub Copilot in VS Code for this project
 
 - **Context**: w ramach pracy z tym projektem
