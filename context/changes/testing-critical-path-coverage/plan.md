@@ -281,10 +281,10 @@ Brak zmian schematu/migracji w tej fazie.
 
 #### Automated
 
-- [x] 3.1 `npm run test:integration` przechodzi dla wszystkich przypadków `prediction-lock.test.ts`
-- [x] 3.2 `npm run lint` przechodzi
+- [x] 3.1 `npm run test:integration` przechodzi dla wszystkich przypadków `prediction-lock.test.ts` — 65be919
+- [x] 3.2 `npm run lint` przechodzi — 65be919
 
 #### Manual
 
-- [x] 3.3 Brak osieroconych rekordów/kont testowych w Supabase po przebiegu
-- [x] 3.4 Brak wpływu na regułę "jeden aktywny turniej naraz" po testach
+- [x] 3.3 Brak osieroconych rekordów/kont testowych w Supabase po przebiegu — 65be919
+- [x] 3.4 Brak wpływu na regułę "jeden aktywny turniej naraz" po testach — 65be919
