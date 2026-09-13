@@ -257,14 +257,14 @@ Brak zmian schematu/migracji w tej fazie.
 
 #### Automated
 
-- [x] 1.1 `npm run test` przechodzi (wszystkie przypadki macierzy 3/1/0 zielone)
-- [x] 1.2 `npm run lint` przechodzi bez nowych błędów/ostrzeżeń
-- [x] 1.3 `npm run build` przechodzi bez regresji
+- [x] 1.1 `npm run test` przechodzi (wszystkie przypadki macierzy 3/1/0 zielone) — 52b25e9
+- [x] 1.2 `npm run lint` przechodzi bez nowych błędów/ostrzeżeń — 52b25e9
+- [x] 1.3 `npm run build` przechodzi bez regresji — 52b25e9
 
 #### Manual
 
-- [ ] 1.4 Ręczny przegląd `scoring.test.ts` potwierdza pokrycie wszystkich 9 kombinacji kierunek×dokładność, w tym remis:remis różnymi wynikami
-- [ ] 1.5 Po wdrożeniu admin nadal poprawnie wprowadza wynik meczu i punkty naliczają się bez zmian względem stanu przed refaktorem
+- [x] 1.4 Ręczny przegląd `scoring.test.ts` potwierdza pokrycie wszystkich 9 kombinacji kierunek×dokładność, w tym remis:remis różnymi wynikami — 52b25e9
+- [x] 1.5 Po wdrożeniu admin nadal poprawnie wprowadza wynik meczu i punkty naliczają się bez zmian względem stanu przed refaktorem — 52b25e9
 
 ### Phase 2: Integration test harness (test user + fixtures)
 
